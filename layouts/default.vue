@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 html {
   font-family:
     'Source Sans Pro',
