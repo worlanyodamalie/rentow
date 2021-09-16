@@ -1,0 +1,72 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+@font-face{
+    font-family: 'TT Commons Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('TT Commons Regular'), url('~/assets/css/fonts/TT Commons Regular.woff') format('woff'); 
+}
+
+@font-face {
+    font-family: 'TT Commons Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('TT Commons Medium'), url('~/assets/css/fonts/TT Commons Medium.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'TT Commons Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('TT Commons Light'), url('~/assets/css/fonts/TT Commons Light.woff') format('woff');
+        }
+        
+@font-face {
+    font-family: 'TT Commons Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('TT Commons Bold'), url('~/assets/css/fonts/TT Commons Bold.woff') format('woff');
+}   
+
+@font-face {
+    font-family: 'TT Commons Black';
+    font-style: normal;
+    font-weight: normal;
+    src: local('TT Commons Black'), url('~/assets/css/fonts/TT Commons Black.woff') format('woff');
+    }
+
+html{
+  font-family: 'DM Sans' , 'TT Commons Regular';
+  font-size: 16px;
+}
+
+body{
+  margin: 0;
+  min-height: 100vh
+}
+
+.auth-container{
+    max-width: 30rem;
+    margin: auto;
+}
+
+input{
+    padding: .5rem;
+    border: 1px solid #E1E3E6;
+    border-radius: 8px; 
+}
+
+::placeholder{
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.8rem;
+    line-height: 24px;
+    color: #404D61;
+}
+
