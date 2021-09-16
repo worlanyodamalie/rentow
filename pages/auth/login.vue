@@ -13,7 +13,7 @@
                 <input class="w-100" placeholder="Enter your email address" type="email" name="email"  >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your  password" type="password" name="password"  >
+                <input class="w-100" placeholder="Enter your  password" type="password" name="password"  autocomplete="current-password" >
             </div>
             <nuxt-link to="/auth/forgot-password" class="db tr green pv3 fw7 text-underline-none">Forgot password</nuxt-link>
             

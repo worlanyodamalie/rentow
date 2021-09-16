@@ -19,10 +19,10 @@
                 <input class="w-100" placeholder="Enter your email address" type="email" name="email"  >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your preferred password" type="password" name="password"  >
+                <input class="w-100" placeholder="Enter your preferred password" type="password" name="password" autocomplete="current-password" >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Re-enter your preferred password" type="password" name="re-password"  >
+                <input class="w-100" placeholder="Re-enter your preferred password" type="password" name="re-password" autocomplete="current-password" >
             </div>
             <div class="pv3">
                 <button class="btn btn--green">Register</button>
