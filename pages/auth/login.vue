@@ -6,40 +6,28 @@
                 <path d="M2.6647 21.5666V9.75292C2.66465 9.57059 2.7207 9.39265 2.82527 9.24328C2.92983 9.0939 3.07783 8.98033 3.24916 8.91797L11.8394 5.79491C11.9065 5.77049 11.9785 5.76261 12.0493 5.77193C12.1201 5.78126 12.1876 5.80752 12.246 5.84849C12.3045 5.88945 12.3523 5.94392 12.3852 6.00727C12.4182 6.07061 12.4354 6.14097 12.4354 6.21238V10.6118L18.0455 12.4816C18.2225 12.5405 18.3764 12.6537 18.4854 12.805C18.5945 12.9563 18.6531 13.138 18.6531 13.3245V21.5666H20.4296V23.343H0.888214V21.5666H2.6647ZM4.44119 21.5666H10.6589V8.11411L4.44119 10.3756V21.5666ZM16.8766 21.5666V13.965L12.4354 12.4843V21.5666H16.8766Z" fill="#07A287"/>
             </svg>
         </div>
-        <p class="fw7 f3 dark pb4">Hello,</p>
-        <p class="grey fs-normal normal pb2">Enter your details to create an account</p>
+        <p class="fw7 f3 dark pb4">Welcome,</p>
+        <p class="grey fs-normal normal pb3">Welcome back to Rentow. Log in to continue.</p>
         <form >
-            <div class="pv3">
-                <input class="w-100" placeholder="Enter your first name" type="text" name="first-name"  >
-            </div>
-            <div class="pv3">
-                <input class="w-100" placeholder="Enter your last name" type="text" name="last-name"  >
-            </div>
             <div class="pv3">
                 <input class="w-100" placeholder="Enter your email address" type="email" name="email"  >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your preferred password" type="password" name="password"  >
+                <input class="w-100" placeholder="Enter your  password" type="password" name="password"  >
             </div>
+            <nuxt-link to="/auth/forgot-password" class="db tr green pv3 fw7 text-underline-none">Forgot password</nuxt-link>
+            
             <div class="pv3">
-                <input class="w-100" placeholder="Re-enter your preferred password" type="password" name="re-password"  >
+                <button class="btn btn--green">Login</button>
             </div>
-            <div class="pv3">
-                <button class="btn btn--green">Register</button>
-            </div>
-            <div class="bb b--light-gray">
-                <p class="pt3 pb4 db tc cursor">Have an account?<nuxt-link to="/auth/login" class="ph2 green fw7 fs-normal text-underline-none">Log in</nuxt-link></p>
-            </div>
-            <div class="pt3">
-                <p class="fs-normal normal lh-copy tc">By clicking on “Register”, you have read and agreed to</p>
-                <p class="lh-copy tc"><span class="green fw7 fs-normal">Rentow's privacy policy</span> and <span class="green fw7 fs-normal">Terms of use</span></p>
-            </div>
+            <p class="pt3 pb4 db tc cursor">I don't have an account.<nuxt-link to="/auth/register" class="ph1 green fw7 fs-normal text-underline-none">Register</nuxt-link></p>
+
         </form>
     </div>
 </template>
 <script>
 export default {
-    name: 'Register',
+    name: 'Login',
     layout: 'auth'
 }
 </script>
