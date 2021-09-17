@@ -1,11 +1,22 @@
 <template>
-  <div>
+  <div class="default-container">
+    <div class="flex flex-wrap ph5 pv3">
+      <Logo/>
+      <ul class="rentow-ul-nav">
+        <li> <nuxt-link to="/">Search Properties</nuxt-link> </li>
+        <li> <nuxt-link to="/">List Properties</nuxt-link> </li>
+        <li> <nuxt-link to="/">Blog</nuxt-link> </li>
+        <li> <nuxt-link to="/">Log in</nuxt-link> </li>
+      </ul>
+      <div><nuxt-link to="/auth/register" class="btn btn--green">Register</nuxt-link></div>
+      
+    </div>
     <Nuxt />
   </div>
 </template>
 
 <style scoped>
-html {
+/* html {
   font-family:
     'Source Sans Pro',
     -apple-system,
@@ -58,5 +69,5 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
-}
+} */
 </style>

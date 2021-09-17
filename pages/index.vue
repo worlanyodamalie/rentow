@@ -1,38 +1,120 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        rentow
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div class="homepage-container">
+    <div class="flex justify-center flex-wrap">
+        <div>
+          <h1 class="lh-copy fs-normal fw7 f1 green mw7-ns pt4">You will find your perfect space here</h1>
+          <h3 class="lh-copy normal fs-normal fw3 dark mw6-ns">Search for apartments based on your unique needs and your next home will be right in front of you.</h3>
+        </div>
+        <div>
+          <div>
+            <HeroImage />     
+          </div>
+        </div>
+      
     </div>
+    <div class="bb b--light-gray flex pv3  w-90-ns center"></div>
+    <div class="flex flex-column w-90-ns center">
+        <h2 class="f2 pv5 dark fw7 fs-normal">Explore nearby</h2>
+        <div class="flex flex-wrap justify-between">
+            <div v-for="item in exploreLocations" :key="item.location" class="flex items-center pb5">
+              <div>
+                <DefaultLocation />
+              </div>
+              <div class="ph3">
+                <p class="fw7 fs-normal green f4 lh-copy">{{item.location}}</p>
+                <p class="lh-copy fs-normal fw4 grey--4">{{item.apartment}} apartment(s)</p>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-column w-90-ns center">
+        <h2 class="f2 pv5 dark fw7 fs-normal">Designed to meet your needs</h2>
+        <div class="flex flex-wrap justify-between pb4">
+            <div class="flex flex-column">
+                <div>
+                   <img src="~/assets/images/entire-homes.svg" alt="" srcset="">
+                </div>
+                <h3 class="dark fs-normal fw7 pv3">Entire homes</h3>
+            </div>
+            <div class="flex flex-column">
+                <div>
+                   <img src="~/assets/images/short-stays.svg" alt="" srcset="">
+                </div>
+                <h3 class="dark fs-normal fw7 pv3">Short stays</h3>
+            </div>
+            <div class="flex flex-column">
+                <div>
+                   <img src="~/assets/images/newly-built-homes.svg" alt="" srcset="">
+                </div>
+                <h3 class="dark fs-normal fw7 pv3">Newly built homes</h3>
+            </div>
+        </div>
+        <div class="w-100 mv4 find-location">
+           <div class="flex flex-column pv4">
+               <h3 class="f3 fw7 fs-normal lh-copy white mw6-ns ">Not sure which location to choose?We got you.</h3>
+               <div class="pt3">
+                  <nuxt-link to="/" class="btn btn--green" style="width: unset;">Click here</nuxt-link>
+               </div>
+           </div>
+        </div>
+        <h2 class="f2 pv5 dark fw7 fs-normal">Featured properties</h2>
+        <FeaturedProperty />
+
+    </div>
+    
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data: () => ({
+    exploreLocations: [
+      {
+        location: 'Adenta',
+        apartment: 311
+      },
+      {
+        location: 'Sakumono',
+        apartment: 309
+      },
+      {
+        location: 'Achimota',
+        apartment: 890
+      },
+      {
+        location: 'Spintex',
+        apartment: 908
+      },
+      {
+        location: 'Haatso',
+        apartment: 209
+      },
+      {
+        location: 'Dansoman',
+        apartment: 498
+      },
+      {
+        location: 'Kasoa',
+        apartment: 87
+      },
+      {
+        location: 'Osu',
+        apartment: 489
+      }
+    ]
+  })
+}
 </script>
 
 <style>
-.container {
+
+.find-location{
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('~assets/images/location-background.svg');
+  border-radius: 8px;
+  background-size: cover;
+  padding:5rem;
+}
+/* .container {
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
@@ -69,5 +151,5 @@ export default {}
 
 .links {
   padding-top: 15px;
-}
+} */
 </style>
