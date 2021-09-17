@@ -6,7 +6,7 @@
         <li> <nuxt-link to="/">Search Properties</nuxt-link> </li>
         <li> <nuxt-link to="/">List Properties</nuxt-link> </li>
         <li> <nuxt-link to="/">Blog</nuxt-link> </li>
-        <li> <nuxt-link to="/">Log in</nuxt-link> </li>
+        <li> <nuxt-link to="auth/login">Log in</nuxt-link> </li>
       </ul>
       <div><nuxt-link to="/auth/register" class="btn btn--green">Register</nuxt-link></div>
       
