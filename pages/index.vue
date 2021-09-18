@@ -15,7 +15,7 @@
     <div class="bb b--light-gray flex pv3  w-90-ns center"></div>
     <div class="flex flex-column w-90-ns center">
         <h2 class="f2 pv5 dark fw7 fs-normal">Explore nearby</h2>
-        <div class="flex flex-wrap justify-between">
+        <div class="nearby-cards">
             <div v-for="item in exploreLocations" :key="item.location" class="flex items-center pb5">
               <div>
                 <DefaultLocation />
@@ -113,6 +113,11 @@ export default {
   border-radius: 8px;
   background-size: cover;
   padding:5rem;
+}
+
+.nearby-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
 }
 /* .container {
   margin: 0 auto;
