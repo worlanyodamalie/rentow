@@ -10,19 +10,20 @@
     </div>
     <div class="pv3">
         <div v-if="title === 'residential'">
-            <div class="flex">
+            <div class="flex flex-wrap justify-center">
 
-                <div v-for="residence in residential" :key="residence.title" class="flex flex-column">
+                <div v-for="residence in residential" :key="residence.title" class="flex flex-column ph3">
                     <div class="pv3">
                         <img :src="require(`~/assets/images/${residence.image}`)" alt="" srcset="">
                     </div>
                     <h3 class="dark fs-normal fw7 pv3">{{residence.title}}</h3>
-                    <ul class="flex featured-prop-ul">
+                    <ul class="flex flex-wrap featured-prop-ul">
                         <li><p>{{residence.location}}</p></li>
-                        <li v-for="(utility , key) in residence.utilities" :key="key">
-                            <p>{{ utility }} </p>
+                        <li  v-for="(utility , key) in residence.utilities" :key="key">
+                            <p><span class="rounded-grey-dot"></span>{{ utility }} </p>
                         </li>
                     </ul>
+                    <h3 class="pv2 green">GHS {{residence.price}} <span class="grey--4 f6">per month</span> </h3>
                 </div>
             </div>
         </div>
@@ -31,6 +32,9 @@
         </div>
         <div v-if="title === 'industrial'">
             <p>Industrial</p>
+        </div>
+        <div class="pv5 flex justify-center">
+            <nuxt-link class="btn btn--green " to="/">View all properties</nuxt-link>
         </div>
     </div>
 
@@ -50,6 +54,41 @@ export default {
                    price: 6000,
                    title: 'A mini self contain apartment',
                    utilities: ['1 bedroom' , '1 bathroom']
+               },
+               {
+                   image: 'apartment.svg',
+                   location: 'Achimota',
+                   price: 6000,
+                   title: 'Two bedroom apartment',
+                   utilities: ['1 bedroom' , '1 bathroom']
+               },
+                {
+                   image: 'apartment.svg',
+                   location: 'Achimota',
+                   price: 6000,
+                   title: 'Two bedroom apartment',
+                   utilities: ['1 bedroom' , '1 bathroom']
+               },
+               {
+                   image: 'apartment.svg',
+                   location: 'Achimota',
+                   price: 6000,
+                   title: 'A mini self contain apartment',
+                   utilities: ['1 bedroom' , '1 bathroom']
+               },
+               {
+                   image: 'apartment.svg',
+                   location: 'Achimota',
+                   price: 6000,
+                   title: 'Two bedroom apartment',
+                   utilities: ['1 bedroom' , '1 bathroom']
+               },
+                {
+                   image: 'apartment.svg',
+                   location: 'Achimota',
+                   price: 6000,
+                   title: 'Two bedroom apartment',
+                   utilities: ['1 bedroom' , '1 bathroom']
                }
            ]
         }
@@ -63,6 +102,7 @@ export default {
    .property-nav{
        padding:0;
        list-style: none;
+       /* overflow-x:auto; */
    }
 
    .property-nav > li{
@@ -96,8 +136,29 @@ export default {
    /* .featured-prop-ul > li:first-child {
           list-style: none;
    } */
+   .rounded-grey-dot{
+        border-radius: 50%;
+        background: #C3C7CE;
+        width: 1px;
+        height: 1px;
+        padding: 3px;
+        display: inline-block;
+        margin-right: 4px;
+        vertical-align: middle;
+   }
+
+   .featured-prop-ul > li > p{
+       color: #C3C7CE;
+       font-size:0.95rem;
+   }
 
    .featured-prop-ul > li:not(:first-child) {
        padding: 0 0.7rem;
+   }
+
+   @media screen and (max-width: 29em){
+       .property-nav{
+           overflow-x:auto;
+       }
    }
 </style>

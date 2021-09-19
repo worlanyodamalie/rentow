@@ -21,7 +21,7 @@
                 <input class="w-100" placeholder="Enter your email address" type="email" name="email"  >
             </div>
             <div class="pv3">
-                <button class="btn btn--green">Reset Password</button>
+                <button class="btn btn--green w-100">Reset Password</button>
             </div>
         </form>
     </div>

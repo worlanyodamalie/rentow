@@ -1,15 +1,17 @@
 <template>
   <div class="default-container">
-    <div class="flex flex-wrap ph5 pv3">
+    <div class="flex justify-between-xs items-center flex-wrap rentow-header-nav">
       <Logo/>
-      <ul class="rentow-ul-nav">
+      <ul class="rentow-ul-nav dn-xs">
         <li> <nuxt-link to="/">Search Properties</nuxt-link> </li>
         <li> <nuxt-link to="/">List Properties</nuxt-link> </li>
         <li> <nuxt-link to="/">Blog</nuxt-link> </li>
         <li> <nuxt-link to="auth/login">Log in</nuxt-link> </li>
       </ul>
-      <div><nuxt-link to="/auth/register" class="btn btn--green">Register</nuxt-link></div>
-      
+      <div class="dn-xs"><nuxt-link to="/auth/register" class="btn btn--green">Register</nuxt-link></div>
+      <a class="dn-ns cursor">
+        <img src="~/assets/images/hamburger.svg" alt="">
+      </a>
     </div>
     <Nuxt />
   </div>
