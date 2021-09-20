@@ -59,7 +59,7 @@
         </div>
         <h2 class="f2 pv5 dark fw7 fs-normal">Featured properties</h2>
         <FeaturedProperty />
-        <div class="mv4 br3 pt5 ph5 home-banner">
+        <div class="mv4 br3 pt5 ph5 home-banner ">
             <div class="flex flex-wrap justify-between">
                 <div>
                    <h3 class="dark fw7 lh-copy f2 mw6-ns">Download Rentow mobile app today!</h3>
