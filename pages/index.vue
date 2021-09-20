@@ -7,10 +7,15 @@
         </div>
         <div>
           <div>
+            <!-- <img class="heroimage" src="~/assets/images/hero-image-411w.svg" alt="" srcset=""> -->
             <HeroImage />     
+            
           </div>
         </div>
       
+    </div>
+    <div class="homepage-search-wrapper w-90-ns dn-xs  center">
+      <SearchFilter />
     </div>
     <div class="bb b--light-gray flex pv3  w-90-ns center"></div>
     <div class="flex flex-column w-90-ns center">

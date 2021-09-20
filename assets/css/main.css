@@ -146,6 +146,15 @@ a.btn{
    padding: 1rem 2.5rem
 }
 
+.homepage-search-wrapper{
+    background: #FFFFFF;
+    box-shadow: 0px 8px 40px rgb(0 0 0 / 8%);
+    border-radius: 4px;
+    padding: 1.85rem 1rem;
+    position: relative;
+    top: -11rem;
+}
+
 .rentow-ul-nav{
     display: flex;
     list-style: none;
@@ -224,6 +233,10 @@ a.btn{
     padding: 2.5rem 0;
 }
 
+.heroimage{
+    border-radius: 50%;
+}
+
 @media screen and (max-width:48em){
     .flex-wrap-ms{
         flex-wrap: wrap;
@@ -236,6 +249,14 @@ a.btn{
     }
     .footer-wrapper > ul:nth-child(4){
         margin-left:auto
+    }
+
+    .rentow-search-filter{
+        justify-content: space-between;
+    }
+    
+    .rentow-search-filter > div{
+       flex: 0 0 28%
     }
 }
 
@@ -276,6 +297,10 @@ a.btn{
 
     .footer-wrapper > ul{
         flex: 1 1 100%
+    }
+
+    .heroimage{
+        border-radius: unset;
     }
 }
 

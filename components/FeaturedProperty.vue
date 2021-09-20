@@ -59,7 +59,7 @@ export default {
                    image: 'apartment.svg',
                    location: 'Achimota',
                    price: 6000,
-                   title: 'Two bedroom apartment',
+                   title: 'One bedroom apartment',
                    utilities: ['1 bedroom' , '1 bathroom']
                },
                 {
@@ -67,28 +67,28 @@ export default {
                    location: 'Achimota',
                    price: 6000,
                    title: 'Two bedroom apartment',
+                   utilities: ['2 bedroom' , '1 bathroom']
+               },
+               {
+                   image: 'apartment.svg',
+                   location: 'Achimota',
+                   price: 6000,
+                   title: 'A self contain apartment',
                    utilities: ['1 bedroom' , '1 bathroom']
                },
                {
                    image: 'apartment.svg',
                    location: 'Achimota',
                    price: 6000,
-                   title: 'A mini self contain apartment',
-                   utilities: ['1 bedroom' , '1 bathroom']
-               },
-               {
-                   image: 'apartment.svg',
-                   location: 'Achimota',
-                   price: 6000,
-                   title: 'Two bedroom apartment',
-                   utilities: ['1 bedroom' , '1 bathroom']
+                   title: 'Three bedroom apartment',
+                   utilities: ['3 bedroom' , '2 bathroom']
                },
                 {
                    image: 'apartment.svg',
                    location: 'Achimota',
                    price: 6000,
-                   title: 'Two bedroom apartment',
-                   utilities: ['1 bedroom' , '1 bathroom']
+                   title: 'Four bedroom apartment',
+                   utilities: ['4 bedroom' , '3 bathroom']
                }
            ]
         }
