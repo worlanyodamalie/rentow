@@ -4,7 +4,7 @@
       <Logo/>
       <ul class="rentow-ul-nav dn-xs">
         <li> <nuxt-link to="/">Search Properties</nuxt-link> </li>
-        <li> <nuxt-link to="/">List Properties</nuxt-link> </li>
+        <li> <nuxt-link to="/list-property/create">List Properties</nuxt-link> </li>
         <li> <nuxt-link to="/">Blog</nuxt-link> </li>
         <li> <nuxt-link to="auth/login">Log in</nuxt-link> </li>
       </ul>
