@@ -1,7 +1,7 @@
 <template>
   <div class="default-container">
     <div class="flex justify-between-xs items-center flex-wrap rentow-header-nav">
-      <Logo/>
+      <nuxt-link class="cursor" to="/"><Logo/></nuxt-link>  
       <ul class="rentow-ul-nav dn-xs">
         <li> <nuxt-link to="/">Search Properties</nuxt-link> </li>
         <li> <nuxt-link to="/list-property/create">List Properties</nuxt-link> </li>
