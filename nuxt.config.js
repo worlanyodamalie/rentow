@@ -48,7 +48,36 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+          required: true,
+          type: 'Bearer'
+        },
+        user: {
+          property: 'user',
+          autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/login', method: 'post' },
+          logout: { url: '/logout', method: 'post' }
+          // user: { url: '/api/auth/user', method: 'get' }
+        }
+      }
+    }
+  },
+  // router: {
+  //   middleware: ['auth']
+  // },
+  axios: {
+    baseURL: "https://rentow.herokuapp.com/api"
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

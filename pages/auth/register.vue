@@ -11,24 +11,24 @@
         </div>
         <p class="fw7 f3 dark pb4">Hello,</p>
         <p class="grey fs-normal normal pb2">Enter your details to create an account</p>
-        <form >
+        <form @submit.prevent="register">
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your first name" type="text" name="first-name"  >
+                <input class="w-100" placeholder="Enter your first name" type="text" name="first-name"  v-model="registerData.firstname"  >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your last name" type="text" name="last-name"  >
+                <input class="w-100" placeholder="Enter your last name" type="text" name="last-name"  v-model="registerData.lastname" >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your email address" type="email" name="email"  >
+                <input class="w-100" placeholder="Enter your email address" type="email" name="email" v-model="registerData.email" >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your preferred password" type="password" name="password" autocomplete="current-password" >
+                <input class="w-100" placeholder="Enter your preferred password" type="password" name="password" autocomplete="current-password" v-model="registerData.password" >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Re-enter your preferred password" type="password" name="re-password" autocomplete="current-password" >
+                <input class="w-100" placeholder="Re-enter your preferred password" type="password" name="re-password" autocomplete="current-password" v-model="registerData.currentpassword">
             </div>
             <div class="pv3">
-                <button class="btn btn--green w-100">Register</button>
+                <button type="submit" class="btn btn--green w-100">Register</button>
             </div>
             <div class="bb b--light-gray">
                 <p class="pt3 pb4 db tc cursor">Have an account?<nuxt-link to="/auth/login" class="ph2 green fw7 fs-normal text-underline-none">Log in</nuxt-link></p>
@@ -43,6 +43,35 @@
 <script>
 export default {
     name: 'Register',
-    layout: 'auth'
+    layout: 'auth',
+    data(){
+        return {
+           registerData: {
+               firstname: '',
+               lastname: '',
+               email: '',
+               password: '',
+               confirmpassword: ''
+           }
+        }
+    },
+    methods: {
+      async  register(){
+            try {
+               const user = await this.$axios.post("/register" , {
+                    firstname: this.registerData.firstname,
+                    lastname: this.registerData.lastname,
+                    email: this.registerData.email,
+                    password: this.registerData.password,
+                    // phone: '0242206604',
+                    confirm_password: this.registerData.confirmpassword
+                })
+                 
+                console.log(user)
+            } catch (err) {
+                console.log(err.response)
+            }
+        }
+    }
 }
 </script>
