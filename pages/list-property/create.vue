@@ -87,8 +87,8 @@
                                 
                             </div>
                             <div class="flex justify-between pv4">
-                                <button class="btn btn--green mh3" @click.prevent="previous">Back</button>
-                                <button class="btn btn--green mh3" @click.prevent="next" >Proceed</button>
+                                <button class="btn btn--green" @click.prevent="previous">Back</button>
+                                <button class="btn btn--green" @click.prevent="next" >Proceed</button>
                             </div> 
                         </div>
                         <div class="flex flex-column center w-60-ns w-70-l w-90-m w-90-s" v-show="step === 3">
@@ -121,9 +121,10 @@
                                 <option value="">2 years</option>
                                 <option value="">3 years</option>
                                 <option value="">4 years</option>
-                            </select>
+                            </select>  
+                            
 
-                            <div class="flex justify-between pv4 bt b--light-gray">
+                            <div class="flex justify-between pv5 bt b--light-gray">
                                 <button class="btn btn--green" @click.prevent="previous">Back</button>
                                 <button class="btn btn--green"  >Save</button>
                             </div> 
