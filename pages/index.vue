@@ -1,5 +1,6 @@
 <template>
-  <div class="homepage-container">
+ <div>
+    <div class="homepage-container">
     <div class="flex justify-center flex-wrap-ms">
         <div>
           <h1 class="lh-copy fs-normal fw7 f1 green mw7-ns pt4">You will find your perfect space here</h1>
@@ -104,7 +105,10 @@
         </div> 
     </div>
     
-  </div>
+    </div>
+    <Footer />
+ </div>
+  
 </template>
 
 <script>

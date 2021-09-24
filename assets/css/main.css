@@ -221,10 +221,10 @@ a.btn{
     font-size: 0.9rem;
 }
 
-.rentow-ul-nav > li:first-child > a{
+/* .rentow-ul-nav > li:first-child > a{
     color: var(--green);
     font-weight: 700;
-}
+} */
 
 .designed-meet-needs{
     display: grid;
