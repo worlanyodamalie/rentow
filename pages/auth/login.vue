@@ -11,11 +11,15 @@
         <p class="fw7 f3 dark pb4">Welcome,</p>
         <p class="grey fs-normal normal pb3">Welcome back to Rentow. Log in to continue.</p>
         <form @submit.prevent="login">
-            <div class="pv3">
-                <input class="w-100" placeholder="Enter your email address" type="email" name="email"  v-model="logindata.login" >
+            <div class="pa3 alert-invalid br3 flex justify-between" v-if="alert">
+                <p>{{errormessage}}</p>
+                <a class="cursor" @click="dismiss">x</a>
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your  password" type="password" name="password" v-model="logindata.password"  autocomplete="current-password" >
+                <input class="w-100" placeholder="Enter your email address" type="email" name="email"  v-model="logindata.login" required>
+            </div>
+            <div class="pv3">
+                <input class="w-100" placeholder="Enter your  password" type="password" name="password" v-model="logindata.password"  autocomplete="current-password" required >
             </div>
             <nuxt-link to="/auth/forgot-password" class="db tr green pv3 fw7 text-underline-none">Forgot password</nuxt-link>
             
@@ -42,7 +46,10 @@ export default {
                 login: '',
                 password: ''
             },
-            isloading: false
+            isloading: false,
+            errormessage: null,
+            alert: false
+            
         }
     },
     methods: {
@@ -54,11 +61,25 @@ export default {
                })
                this.$router.push('/')
                console.log(response)
-           } catch (err) {
+           } catch (error) {
                this.isloading = false;
-               console.log(err)
+               this.alert = true;
+              
+                this.errormessage = error.response.data.message
+              
+            //    console.log("error",error.response.data)
+               
            }
+       },
+       dismiss(){
+           this.alert = !alert
        }
     }
 }
 </script>
+<style >
+  .alert-invalid{
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+  }
+</style>

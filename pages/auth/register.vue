@@ -12,23 +12,27 @@
         <p class="fw7 f3 dark pb4">Hello,</p>
         <p class="grey fs-normal normal pb2">Enter your details to create an account</p>
         <form @submit.prevent="register">
+            <!-- <div class="pa3 alert-invalid br3 flex justify-between" v-if="alert">
+                <p>{{errormessage}}</p>
+                <a class="cursor" @click="dismiss">x</a>
+            </div> -->
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your first name" type="text" name="first-name"  v-model="registerData.firstname"  >
+                <input class="w-100" placeholder="Enter your first name" type="text" name="first-name"  v-model="registerData.firstname"  required >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your last name" type="text" name="last-name"  v-model="registerData.lastname" >
+                <input class="w-100" placeholder="Enter your last name" type="text" name="last-name"  v-model="registerData.lastname" required>
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your email address" type="email" name="email" v-model="registerData.email" >
+                <input class="w-100" placeholder="Enter your email address" type="email" name="email" v-model="registerData.email" required>
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your phone number" type="text" name="phone"  v-model="registerData.phone" >
+                <input class="w-100" placeholder="Enter your phone number" type="text" name="phone"  v-model="registerData.phone" required>
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your preferred password" type="password" name="password" autocomplete="current-password" v-model="registerData.password" >
+                <input class="w-100" placeholder="Enter your preferred password" type="password" name="password" autocomplete="current-password" v-model="registerData.password" required >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Re-enter your preferred password" type="password" name="re-password" autocomplete="current-password" v-model="registerData.confirmpassword">
+                <input class="w-100" placeholder="Re-enter your preferred password" type="password" name="re-password" autocomplete="current-password" v-model="registerData.confirmpassword" required>
             </div>
             <div class="pv3">
                 <button type="submit" class="btn btn--green w-100">
