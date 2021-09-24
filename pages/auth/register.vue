@@ -22,13 +22,21 @@
                 <input class="w-100" placeholder="Enter your email address" type="email" name="email" v-model="registerData.email" >
             </div>
             <div class="pv3">
+                <input class="w-100" placeholder="Enter your phone number" type="text" name="phone"  v-model="registerData.phone" >
+            </div>
+            <div class="pv3">
                 <input class="w-100" placeholder="Enter your preferred password" type="password" name="password" autocomplete="current-password" v-model="registerData.password" >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Re-enter your preferred password" type="password" name="re-password" autocomplete="current-password" v-model="registerData.currentpassword">
+                <input class="w-100" placeholder="Re-enter your preferred password" type="password" name="re-password" autocomplete="current-password" v-model="registerData.confirmpassword">
             </div>
             <div class="pv3">
-                <button type="submit" class="btn btn--green w-100">Register</button>
+                <button type="submit" class="btn btn--green w-100">
+                    <div class="flex justify-center">
+                        <Loading v-show="isloading" /> <span v-show="isloading === false">Register</span>
+                    </div>
+                    
+                </button>
             </div>
             <div class="bb b--light-gray">
                 <p class="pt3 pb4 db tc cursor">Have an account?<nuxt-link to="/auth/login" class="ph2 green fw7 fs-normal text-underline-none">Log in</nuxt-link></p>
@@ -51,24 +59,29 @@ export default {
                lastname: '',
                email: '',
                password: '',
+               phone: '',
                confirmpassword: ''
-           }
+           },
+           isloading: false
         }
     },
     methods: {
       async  register(){
             try {
+               this.isloading = true; 
                const user = await this.$axios.post("/register" , {
                     firstname: this.registerData.firstname,
                     lastname: this.registerData.lastname,
                     email: this.registerData.email,
+                    phone: this.registerData.phone,
                     password: this.registerData.password,
-                    // phone: '0242206604',
                     confirm_password: this.registerData.confirmpassword
                 })
                  
                 console.log(user)
+                this.$router.push('/')
             } catch (err) {
+                this.isloading = false;
                 console.log(err.response)
             }
         }

@@ -10,17 +10,22 @@
         </div>
         <p class="fw7 f3 dark pb4">Welcome,</p>
         <p class="grey fs-normal normal pb3">Welcome back to Rentow. Log in to continue.</p>
-        <form >
+        <form @submit.prevent="login">
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your email address" type="email" name="email"  >
+                <input class="w-100" placeholder="Enter your email address" type="email" name="email"  v-model="logindata.login" >
             </div>
             <div class="pv3">
-                <input class="w-100" placeholder="Enter your  password" type="password" name="password"  autocomplete="current-password" >
+                <input class="w-100" placeholder="Enter your  password" type="password" name="password" v-model="logindata.password"  autocomplete="current-password" >
             </div>
             <nuxt-link to="/auth/forgot-password" class="db tr green pv3 fw7 text-underline-none">Forgot password</nuxt-link>
             
             <div class="pv3">
-                <button class="btn btn--green w-100">Login</button>
+                <button class="btn btn--green w-100" type="submit">
+                    <div class="flex justify-center">
+                        <Loading v-show="isloading" /> <span v-show="isloading === false">Login</span>
+                    </div>
+                    
+                </button>
             </div>
             <p class="pt3 pb4 db tc cursor">I don't have an account.<nuxt-link to="/auth/register" class="ph1 green fw7 fs-normal text-underline-none">Register</nuxt-link></p>
 
@@ -30,6 +35,30 @@
 <script>
 export default {
     name: 'Login',
-    layout: 'auth'
+    layout: 'auth',
+    data(){
+        return {
+            logindata: {
+                login: '',
+                password: ''
+            },
+            isloading: false
+        }
+    },
+    methods: {
+       async login(){
+           try {
+               this.isloading = true;
+               const response = await this.$auth.loginWith("local",{
+                   data: this.logindata
+               })
+               this.$router.push('/')
+               console.log(response)
+           } catch (err) {
+               this.isloading = false;
+               console.log(err)
+           }
+       }
+    }
 }
 </script>
