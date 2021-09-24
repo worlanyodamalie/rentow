@@ -59,8 +59,8 @@ export default {
                const response = await this.$auth.loginWith("local",{
                    data: this.logindata
                })
-               this.$router.push('/')
-               console.log(response)
+               this.$router.push('/list-property')
+            //    console.log(response)
            } catch (error) {
                this.isloading = false;
                this.alert = true;

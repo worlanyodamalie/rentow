@@ -82,8 +82,8 @@ export default {
                     confirm_password: this.registerData.confirmpassword
                 })
                  
-                console.log(user)
-                this.$router.push('/')
+                // console.log(user)
+                this.$router.push('/list-property')
             } catch (err) {
                 this.isloading = false;
                 console.log(err.response)
