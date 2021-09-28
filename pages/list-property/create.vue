@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-         <div>
-             <h2 class="fw7 fs-normal dark lh-copy">Add a new listing</h2>
-             <div class="pv5">
+         <div class="pv4">
+             <h2 class="fw7 fs-normal dark lh-copy pv3">Add a new listing</h2>
+             <div class="">
                   <ul class="listing-multistep-ul flex flex-wrap">
                     <li :class="[step === 1 ? 'active' : '']"><a ><span class="rounded-listing mr2"></span>Listing overview</a></li>
                     <li :class="[step === 2 ? 'active' : '']"><a ><span class="rounded-listing mr2"></span>Description</a></li>
