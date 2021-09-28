@@ -11,6 +11,7 @@
         </div>
         <p class="fw7 f3 dark pb4">Hello,</p>
         <p class="grey fs-normal normal pb2">Enter your details to create an account</p>
+        
         <form @submit.prevent="register">
             <!-- <div class="pa3 alert-invalid br3 flex justify-between" v-if="alert">
                 <p>{{errormessage}}</p>
