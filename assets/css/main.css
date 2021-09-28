@@ -176,6 +176,10 @@ a.btn{
     color: #757D8A;
 }
 
+.mx-auto{
+    margin: 0 auto;
+}
+
 /* default-layout */
 /* .default-container{
    
