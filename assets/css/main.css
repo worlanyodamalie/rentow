@@ -176,6 +176,26 @@ a.btn{
     color: #757D8A;
 }
 
+.btn--green-outline {
+    /* align-self: center; */
+    border: 1px solid #07a287;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 9px 40px;
+    color: #07a287;
+    font-weight: 500;
+}
+
+.btn--grey-outline {
+    border: 1px solid #E1E3E6;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 9px 40px;
+    color: var(--grey--5);
+    font-weight: 500;
+  }
+
+
 .mx-auto{
     margin: 0 auto;
 }

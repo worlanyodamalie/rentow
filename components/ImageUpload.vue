@@ -1,6 +1,6 @@
 <template>
     <div>
-        <dropzone id="foo" ref="el" :options="options"  :destroyDropzone="true" :useCustomSlot="true">
+        <dropzone id="foo" ref="el" :options="options"  :destroyDropzone="true" :useCustomSlot="true" @vdropzone-max-files-exceeded="maxfileSize">
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <g id=" Outline / upload">
@@ -25,10 +25,16 @@ export default {
                 url: "http://httpbin.org/anything",
                 thumbnailWidth: 200,
                 addRemoveLinks: true,
-                maxFilesize: 5,
+                maxFilesize: 1,
+                maxFiles: 2,
                 acceptedFiles: ".jpeg,.jpg,.png"
             }
         }
+    },
+    methods: {
+       maxfileSize(file){
+           alert("Max file exceed" , file)
+       }
     },
     mounted(){
         const instance = this.$refs.el.dropzone
