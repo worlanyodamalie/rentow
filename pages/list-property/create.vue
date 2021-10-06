@@ -226,7 +226,7 @@
 </template>
 <script>
 export default {
-  name: "Add Listing",
+  name: "AddListing",
   data() {
     return {
       listtype: null,

@@ -3,10 +3,14 @@
     <Dropzone
       id="foo"
       ref="el"
+      class="vue-dropzone dropzone dz-clickable"
       :options="options"
       :destroy-dropzone="true"
       :use-custom-slot="true"
+      :class="[isAddedFile === true ? 'added-bg dz-started' : '']"
       @vdropzone-max-files-exceeded="maxfileSize"
+      @vdropzone-files-added="checkFileAdded"
+      @vdropzone-removed-file="removeFiles"
     >
       <div>
         <svg
@@ -43,9 +47,10 @@ export default {
         thumbnailWidth: 200,
         addRemoveLinks: true,
         maxFilesize: 1,
-        maxFiles: 2,
-        acceptedFiles: ".jpeg,.jpg,.png",
+        maxFiles: 5,
+        acceptedFiles: ".jpeg,.jpg,.png,.svg",
       },
+      isAddedFile: false,
     };
   },
   mounted() {
@@ -55,6 +60,19 @@ export default {
   methods: {
     maxfileSize(file) {
       alert("Max file exceed", file);
+    },
+    checkFileAdded(file) {
+      if (file.length > 0) {
+        this.isAddedFile = true;
+      } else {
+        this.isAddedFile = false;
+      }
+    },
+    // eslint-disable-next-line no-unused-vars
+    removeFiles(file) {
+      if (this.$refs.el.dropzone.files.length === 0) {
+        this.isAddedFile = false;
+      }
     },
   },
 };
@@ -70,6 +88,11 @@ export default {
 
 .vue-dropzone:hover {
   background-color: rgba(235, 248, 246, 1);
+  /* background-color: rgba(235, 248, 246, 1); */
+}
+
+.added-bg {
+  background-color: #ffffff;
 }
 
 /* .dropzone{
