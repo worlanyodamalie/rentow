@@ -55,14 +55,21 @@
         </div>
         <div>
           <h2 class="dark fw7 pb3 bb b--light-gray f4">Listings</h2>
-          <div class="flex flex-column pv7">
+          <div class="flex flex-column items-center pv6">
             <div>
-              <p class="lh-copy grey--5 fw7 f5 mb1 tc">
+              <div class="tc">
+                <img src="~/assets/images/add-listing-empty-state.svg" />
+              </div>
+
+              <p class="lh-copy grey--5 fw7 f4 mv2 tc">
                 You have not created a listing yet
+              </p>
+              <p class="grey--6 lh-copy fw4 mv2 tc">
+                Click the button below to add a new listing.
               </p>
             </div>
 
-            <div class="pv2 tc">
+            <div class="pv3 tc">
               <nuxt-link to="/list-property/create" class="btn btn--green"
                 >Add new listing</nuxt-link
               >
