@@ -1,22 +1,17 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'rentow',
+    title: "rentow",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { hid: "description", name: "description", content: "" },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [
-    'tachyons/css/tachyons.css',
-    '@/assets/css/main.css'
-  ],
+  css: ["tachyons/css/tachyons.css", "@/assets/css/main.css"],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
@@ -26,62 +21,59 @@ export default {
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
-  target: 'static',
+  target: "static",
 
   ssr: false,
 
   generate: {
-     fallback: true
+    fallback: true,
   },
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
-  buildModules: [
-    '@nuxtjs/google-fonts'
-   
-  ],
+  buildModules: ["@nuxtjs/google-fonts"],
 
   googleFonts: {
-    display: 'swap', 
+    display: "swap",
     families: {
-        'DM+Sans': [400,500,700]
-      } 
+      "DM+Sans": [400, 500, 700],
+      Poppins: [400, 500, 700],
+      Montserrat: [400, 500, 700],
+    },
   },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
-  ],
+  modules: ["@nuxtjs/axios", "@nuxtjs/auth-next"],
   auth: {
     strategies: {
       local: {
         token: {
-          property: 'token',
+          property: "token",
           global: true,
-          required: true,
-          type: 'Bearer'
+          // required: true,
+          // type: "Bearer",
         },
         user: {
-          property: 'user',
-          autoFetch: true
+          property: false,
+          autoFetch: false,
         },
         endpoints: {
-          login: { url: '/login', method: 'post' },
-          logout: { url: '/logout', method: 'post' }
+          login: { url: "/login", method: "post", propertyName: "data.token" },
+          logout: false,
+          user: false,
           // user: { url: '/api/auth/user', method: 'get' }
-        }
-      }
-    }
+        },
+      },
+    },
   },
   // router: {
   //   middleware: ['auth']
   // },
   axios: {
-    baseURL: "https://rentow.herokuapp.com/api"
+    baseURL: "https://rentow.herokuapp.com/api",
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     // transpile: ["vee-validate/dist/rules"]
-  }
-}
+  },
+};
