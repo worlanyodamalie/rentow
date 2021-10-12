@@ -8,13 +8,20 @@
               <h1 class="white b lh-copy mt0 mb2 f1">
                 List your properties here for sale, rent or lease.
               </h1>
-              <h3 class="normal lh-copy white fs-normal mb2">
+              <h3 class="normal lh-copy white fs-normal mb3">
                 We offer property seekers the easiest way to find properties you
                 list here.
               </h3>
             </div>
             <div>
-              <div class="property-login-card flex flex-column mx-auto">
+              <div
+                class="
+                  property-login-card
+                  flex flex-column
+                  ml-auto-ns
+                  mx-auto-s
+                "
+              >
                 <div class="tc">
                   <nuxt-link to="/">
                     <svg
@@ -91,7 +98,7 @@
       <div class="pv5">
         <h2 class="tc f2 fw7 dark mv2 lh-copy">How it works</h2>
         <div class="container">
-          <div class="how-it-works-cards">
+          <div class="how-it-works-cards w-90-ns mx-auto">
             <div class="flex flex-column mv3">
               <div class="mv3">
                 <svg
@@ -107,8 +114,8 @@
                   />
                 </svg>
               </div>
-              <h2 class="dark fw7 lh-copy f2">Sign Up</h2>
-              <h3 class="mv3 fw5 dark lh-copy font-family-poppins">
+              <h2 class="dark fw7 lh-copy f3">Sign Up</h2>
+              <h3 class="mv3 fw5 f5 dark lh-copy font-family-poppins">
                 amet nostrud quis commodo do sunt aute nulla ad aute minim duis
                 duis sit et culpa consectetur et enim mollit
               </h3>
@@ -128,8 +135,8 @@
                   />
                 </svg>
               </div>
-              <h2 class="dark fw7 lh-copy f2">List your property</h2>
-              <h3 class="mv3 fw5 dark lh-copy font-family-poppins">
+              <h2 class="dark fw7 lh-copy f3">List your property</h2>
+              <h3 class="mv3 fw5 f5 dark lh-copy font-family-poppins">
                 amet nostrud quis commodo do sunt aute nulla ad aute minim duis
                 duis sit et culpa consectetur et enim mollit
               </h3>
@@ -149,8 +156,8 @@
                   />
                 </svg>
               </div>
-              <h2 class="dark fw7 lh-copy f2">Talk to potential clients</h2>
-              <h3 class="mv3 fw5 dark lh-copy font-family-poppins">
+              <h2 class="dark fw7 lh-copy f3">Talk to potential clients</h2>
+              <h3 class="mv3 fw5 f5 dark lh-copy font-family-poppins">
                 amet nostrud quis commodo do sunt aute nulla ad aute minim duis
                 duis sit et culpa consectetur et enim mollit
               </h3>
@@ -170,8 +177,8 @@
                   />
                 </svg>
               </div>
-              <h2 class="dark fw7 lh-copy f2">Finalize the deal</h2>
-              <h3 class="mv3 fw5 dark lh-copy font-family-poppins">
+              <h2 class="dark fw7 lh-copy f3">Finalize the deal</h2>
+              <h3 class="mv3 fw5 f5 dark lh-copy font-family-poppins">
                 amet nostrud quis commodo do sunt aute nulla ad aute minim duis
                 duis sit et culpa consectetur et enim mollit
               </h3>
@@ -187,7 +194,7 @@
         </ListingBanner>
       </div>
       <div class="pv4 container">
-        <div class="agents-say-section ph5">
+        <div class="agents-say-section mh5-ns">
           <h2 class="tc f2 fw7 dark mv2 lh-copy">What other agents say</h2>
           <div class="agent-say-card pv5">
             <div class="mx-auto">
@@ -251,11 +258,11 @@ export default {
 
 .how-it-works-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
 }
 
 .how-it-works-cards > div {
-  max-width: 27rem;
+  max-width: 25rem;
 }
 
 .agent-say-card {

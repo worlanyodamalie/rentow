@@ -491,6 +491,15 @@ a.btn{
         margin-left: 8rem;
         margin-right: 8rem;
     }
+
+    .mh5-ns{
+        margin-left: 4rem;
+        margin-right: 4rem;
+    }
+
+    .ml-auto-ns{
+        margin-left: auto;
+    }
 }
 
 
@@ -547,6 +556,10 @@ a.btn{
     /* width breakpoint */
     .w-90-s{
         width:90%;
+    }
+
+    .mx-auto-s{
+        margin:0 auto;
     }
 
     /* width breakpoint */
