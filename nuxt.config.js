@@ -48,7 +48,7 @@ export default {
       local: {
         token: {
           property: "token",
-          global: true,
+          global: false,
           // required: true,
           // type: "Bearer",
         },
@@ -57,7 +57,7 @@ export default {
           autoFetch: false,
         },
         endpoints: {
-          login: { url: "/login", method: "post", propertyName: "data.token" },
+          login: { url: "/login", method: "post", propertyName: "token" },
           logout: false,
           user: false,
           // user: { url: '/api/auth/user', method: 'get' }

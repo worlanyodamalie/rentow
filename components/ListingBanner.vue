@@ -3,7 +3,7 @@
     <div class="flex flex-column pv4">
       <slot></slot>
       <div class="pt3">
-        <nuxt-link to="/" class="btn btn--green" style="width: unset">{{
+        <nuxt-link :to="url" class="btn btn--green" style="width: unset">{{
           buttontext
         }}</nuxt-link>
       </div>
@@ -16,6 +16,10 @@ export default {
     buttontext: {
       type: String,
       default: "Click here",
+    },
+    url: {
+      type: String,
+      default: "/",
     },
   },
 };

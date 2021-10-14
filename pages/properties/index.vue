@@ -187,7 +187,7 @@
         </div>
       </div>
       <div class="mh6-ns">
-        <ListingBanner buttontext="Start here">
+        <ListingBanner buttontext="Start here" url="/list-property/create">
           <h3 class="f2 fw7 fs-normal lh-copy white mw6-ns">
             Start listing your properties on Rentow.
           </h3>

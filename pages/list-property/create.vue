@@ -17,13 +17,13 @@
             <a><span class="rounded-listing mr2"></span>Price details</a>
           </li>
         </ul>
-        <form class="listing-content">
+        <form class="listing-content" @submit.prevent="submitListing">
           <div
             v-show="step === 1"
             class="flex flex-column center w-60-ns w-70-l w-90-m w-90-s"
           >
             <h3 class="f5 dark lh-copy mb2">Listing title</h3>
-            <input id="" type="text" class="mb4" placeholder="" name="" />
+            <input v-model="title" type="text" class="mb4" placeholder="" />
             <h3 class="f5 dark lh-copy mb2">Listing open for</h3>
             <div class="flex flex-wrap justify-between list-radio mb4">
               <div>
@@ -78,8 +78,7 @@
             </div>
             <div class="mb4">
               <textarea
-                id=""
-                name=""
+                v-model="exactaddress"
                 cols="30"
                 rows="10"
                 class="w-100"
@@ -101,8 +100,7 @@
           >
             <h3 class="f5 dark lh-copy mb2">Listing Description</h3>
             <textarea
-              id=""
-              name=""
+              v-model="description"
               cols="30"
               rows="10"
               class="w-100 mb4"
@@ -194,11 +192,13 @@
                 <p class="white lh-copy fw7">GHS</p>
               </div>
               <input
+                v-model="amount"
                 class="input-unset"
                 type="text"
                 placeholder="Write listing price here"
               />
-              <select class="select-unset">
+              <select v-model="period" class="select-unset">
+                <option value="" disabled>Select duration</option>
                 <option>yearly</option>
                 <option>monthly</option>
               </select>
@@ -229,7 +229,12 @@ export default {
   name: "AddListing",
   data() {
     return {
+      title: null,
+      exactaddress: null,
       listtype: null,
+      description: null,
+      amount: null,
+      period: "",
       regionselected: "",
       cityselected: "",
       roomselected: "",
@@ -241,18 +246,26 @@ export default {
       roomOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       apartmentoptions: [],
       facilities: [
-        "Sea view",
+        "A kitchen",
         "Furnished living room",
         "Home cleaning",
-        "Basketball Court",
         "Parking space",
-        "Swimming pool",
         "Personal ECG prepaid meter",
-        "Mini football pitch",
         "Newly built",
         "Home cleaning services",
+        "Walled apartment",
+        "Wifi services",
+        "Sitting room",
       ],
     };
+  },
+  computed: {
+    user() {
+      return this.$auth.$storage.getUniversal("user");
+    },
+  },
+  created() {
+    // this.$auth.$storage.removeUniversal("user");
   },
   methods: {
     next() {
@@ -260,6 +273,39 @@ export default {
     },
     previous() {
       this.step--;
+    },
+    async submitListing() {
+      try {
+        const user = this.$auth.$storage.getUniversal("user");
+        const user_id = user.profile.id;
+        const token = "Bearer " + user.token;
+        console.log("token", token);
+        const formdata = {
+          title: this.title,
+          listing_type: this.listtype,
+          region: this.regionselected,
+          city: this.cityselected,
+          address: this.exactaddress,
+          description: this.description,
+          number_of_rooms: this.roomselected,
+          number_of_bathrooms: this.bathroomselected,
+          // amenities: this.apartmentoptions,
+          amenities: "A kitchen, walled apartment, wifi, sitting room",
+          amount: this.amount,
+          period: this.period,
+          user_id: user_id,
+        };
+        console.log(formdata);
+        this.$axios.setHeader("Authorization", token);
+        this.$axios.setHeader("Content-Type", "application/json");
+        const response = await this.$axios.post(
+          "property-listing/create",
+          formdata
+        );
+        console.log(response);
+      } catch (err) {
+        console.log("error", err);
+      }
     },
   },
 };

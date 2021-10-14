@@ -87,6 +87,28 @@ export default {
   data() {
     return {};
   },
+  created() {
+    // const user = this.$auth.$storage.getUniversal("user");
+    // const token = "Bearer " + user.token;
+    // this.$auth.$storage.removeUniversal("user");
+  },
+  mounted() {
+    this.test();
+  },
+  methods: {
+    async test() {
+      try {
+        const user = this.$auth.$storage.getUniversal("user");
+        const token = "Bearer " + user.token;
+        this.$axios.setHeader("Authorization", token);
+        // this.$axios.setHeader("Content-Type", "application/json");
+        const response = await this.$axios.$get("property-listing/agent");
+        console.log(response);
+      } catch (error) {
+        console.log("error", error);
+      }
+    },
+  },
 };
 </script>
 <style>

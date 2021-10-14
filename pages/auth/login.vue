@@ -101,10 +101,12 @@ export default {
         //   username: this.logindata.login,
         // }
         // this.$toast.success("Successfully logged in!");
-        // const setuser = await this.$auth.setUser(user);
+        // const setuser = await this.$auth.setUser(response.data.data.profile);
         // console.log("set user", setuser);
+        const profile = response.data.data;
+        this.$auth.$storage.setUniversal("user", profile, true);
         console.log("logged in", this.$auth.loggedIn);
-        // console.log("login response", response);
+        console.log("login response", response);
         this.$router.push("/list-property");
       } catch (error) {
         this.isloading = false;
