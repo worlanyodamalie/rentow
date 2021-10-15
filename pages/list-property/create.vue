@@ -303,6 +303,7 @@ export default {
           formdata
         );
         console.log(response);
+        this.$router.push("/list-property");
       } catch (err) {
         console.log("error", err);
       }

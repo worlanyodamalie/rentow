@@ -10,25 +10,23 @@
                 class="profile-image"
               />
             </div>
-            <h3 class="fw7 dark tc mv1">Etornam & sons</h3>
-            <h3 class="fw4 grey--6 tc mb2 f5">0200002345</h3>
+            <h3 class="fw7 dark tc mv1">{{ agent.name }}</h3>
+            <h3 class="fw4 grey--6 tc mb2 f5">{{ agent.phone }}</h3>
             <p class="lh-copy fw4 grey--5 tc mb2 pb3 f6">
               No 56, Numo Arkansas Close, Ahinsan, Kasoa, Accra, Ghana.
             </p>
             <div class="pv4 bb bt b--light-gray">
               <div class="flex mb2 justify-between">
                 <span class="fw7 grey--5 lh-copy">Total lisitings</span>
-                <span class="grey--6 lh-copy normal">0</span>
+                <span class="grey--6 lh-copy normal">{{ totalListing }}</span>
               </div>
               <div class="flex mb2 justify-between">
                 <span class="fw7 grey--5 lh-copy">Email</span>
-                <span class="grey--6 lh-copy normal"
-                  >etornamsons@gmail.com</span
-                >
+                <span class="grey--6 lh-copy normal">{{ agent.email }}</span>
               </div>
               <div class="flex mb2 justify-between">
                 <span class="fw7 grey--5 lh-copy">Member Since</span>
-                <span class="grey--6 lh-copy normal">18 January 2012</span>
+                <span class="grey--6 lh-copy normal">{{ memberSince }}</span>
               </div>
             </div>
             <div class="pv4 bb b--light-gray">
@@ -55,7 +53,59 @@
         </div>
         <div>
           <h2 class="dark fw7 pb3 bb b--light-gray f4">Listings</h2>
-          <div class="flex flex-column items-center pv6">
+          <div class="pv4 flex">
+            <div class="ml-auto">
+              <nuxt-link
+                to="/list-property/create"
+                class="btn btn--green ml-auto"
+                >+ Add new</nuxt-link
+              >
+            </div>
+          </div>
+          <div v-if="listing.length !== 0">
+            <div class="flex flex-wrap">
+              <nuxt-link
+                v-for="list in listing"
+                :key="list.title"
+                :to="`/list-property/${list.id}`"
+                class="flex flex-column ph3 cursor text-underline-none"
+              >
+                <div class="pv3">
+                  <img
+                    :src="require(`~/assets/images/apartment.svg`)"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <h3 class="dark fs-normal fw7 pv3">{{ list.title }}</h3>
+                <ul class="flex flex-wrap featured-prop-ul">
+                  <li>
+                    <p>{{ list.city }}</p>
+                  </li>
+                  <!-- <li v-for="(utility, key) in residence.utilities" :key="key">
+                <p><span class="rounded-grey-dot"></span>{{ utility }}</p>
+              </li> -->
+                  <li>
+                    <p>
+                      <span class="rounded-grey-dot"></span
+                      >{{ list.number_of_rooms }} bedroom(s)
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <span class="rounded-grey-dot"></span
+                      >{{ list.number_of_bathrooms }} bathroom(s)
+                    </p>
+                  </li>
+                </ul>
+                <h3 class="pv2 green">
+                  GHS {{ list.amount }}
+                  <span class="grey--4 f6">{{ list.period }}</span>
+                </h3>
+              </nuxt-link>
+            </div>
+          </div>
+          <div v-else class="flex flex-column items-center pv6">
             <div>
               <div class="tc">
                 <img src="~/assets/images/add-listing-empty-state.svg" />
@@ -71,7 +121,7 @@
 
             <div class="pv3 tc">
               <nuxt-link to="/list-property/create" class="btn btn--green"
-                >Add new listing</nuxt-link
+                >+ Add new listing</nuxt-link
               >
             </div>
           </div>
@@ -85,24 +135,38 @@
 export default {
   name: "Listing",
   data() {
-    return {};
+    return {
+      listing: [],
+    };
+  },
+  computed: {
+    agent() {
+      const agent = this.$auth.$storage.getUniversal("user").profile;
+      return agent;
+    },
+    totalListing() {
+      return this.listing.length;
+    },
+    memberSince() {
+      const datecreated = this.agent.created_at;
+      const date = new Date(datecreated).toDateString();
+
+      return date;
+    },
   },
   created() {
-    // const user = this.$auth.$storage.getUniversal("user");
-    // const token = "Bearer " + user.token;
     // this.$auth.$storage.removeUniversal("user");
-  },
-  mounted() {
-    this.test();
+    this.getListing();
   },
   methods: {
-    async test() {
+    async getListing() {
       try {
         const user = this.$auth.$storage.getUniversal("user");
         const token = "Bearer " + user.token;
         this.$axios.setHeader("Authorization", token);
         // this.$axios.setHeader("Content-Type", "application/json");
         const response = await this.$axios.$get("property-listing/agent");
+        this.listing = response.data;
         console.log(response);
       } catch (error) {
         console.log("error", error);
