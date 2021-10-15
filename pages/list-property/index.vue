@@ -105,7 +105,13 @@
               </nuxt-link>
             </div>
           </div>
-          <div v-else class="flex flex-column items-center pv6">
+          <div v-if="isLoading" class="pv4 flex items-center">
+            <LoadingGear />
+          </div>
+          <div
+            v-if="listing.length === 0 && isLoading !== true"
+            class="flex flex-column items-center pv6"
+          >
             <div>
               <div class="tc">
                 <img src="~/assets/images/add-listing-empty-state.svg" />
@@ -137,6 +143,7 @@ export default {
   data() {
     return {
       listing: [],
+      isLoading: false,
     };
   },
   computed: {
@@ -161,13 +168,14 @@ export default {
   methods: {
     async getListing() {
       try {
+        this.isLoading = true;
         const user = this.$auth.$storage.getUniversal("user");
         const token = "Bearer " + user.token;
         this.$axios.setHeader("Authorization", token);
         // this.$axios.setHeader("Content-Type", "application/json");
         const response = await this.$axios.$get("property-listing/agent");
         this.listing = response.data;
-        console.log(response);
+        this.isLoading = false;
       } catch (error) {
         console.log("error", error);
       }
