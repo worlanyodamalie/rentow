@@ -62,6 +62,10 @@
               {{ listing.city }}
             </h5>
             <p class="mv3 lh-copy fw4 dark">
+              {{ listing.description }}
+            </p>
+
+            <!-- <p class="mv3 lh-copy fw4 dark">
               In a beautiful small room in a ceiling apartment in
               3-flat-building, you will feel at home for some time. We welcome
               you and are happy to have you there. The flat is located very
@@ -74,7 +78,7 @@
             <p class="mv3 lh-copy fw4 dark">
               Every room is completely furnished, including bed sheets, duvets
               and towels. The bathroom and the kitchen are for common use...
-            </p>
+            </p> -->
             <a class="green fw7 cursor mv3">
               Show more
               <svg
@@ -150,7 +154,7 @@
                 />
               </div>
               <div>
-                <h2 class="lh-copy fw7 dark f5 mb1">Etornam & Sons Property</h2>
+                <h2 class="lh-copy fw7 dark f5 mb1">{{ agent.name }}</h2>
                 <p class="fw4 grey--6 lh-copy f6">Posted 238 properties</p>
               </div>
             </div>
@@ -293,7 +297,7 @@
               />
             </div>
             <div>
-              <h2 class="lh-copy fw7 dark f5 mb1">Etornam & Sons Property</h2>
+              <h2 class="lh-copy fw7 dark f5 mb1">{{ agent.name }}</h2>
               <p class="fw4 grey--6 lh-copy f6">Posted 238 properties</p>
             </div>
           </div>
@@ -341,6 +345,12 @@ export default {
       isAdmin: false,
       listing: [],
     };
+  },
+  computed: {
+    agent() {
+      const agent = this.$auth.$storage.getUniversal("user").profile;
+      return agent;
+    },
   },
   created() {
     this.getAgentListing(this.$route.params.id);
