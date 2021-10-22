@@ -68,7 +68,7 @@
                 v-for="list in listing"
                 :key="list.title"
                 :to="`/list-property/${list.id}`"
-                class="flex flex-column ph3 cursor text-underline-none"
+                class="flex flex-column ph3 mb3 cursor text-underline-none"
               >
                 <div class="pv3">
                   <img
@@ -77,7 +77,7 @@
                     srcset=""
                   />
                 </div>
-                <h3 class="dark fs-normal fw7 pv3">{{ list.title }}</h3>
+                <h3 class="dark fs-normal fw7 pv3 mw5">{{ list.title }}</h3>
                 <ul class="flex flex-wrap featured-prop-ul">
                   <li>
                     <p>{{ list.city }}</p>
