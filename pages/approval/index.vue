@@ -11,6 +11,9 @@
             placeholder="Search by agent name"
           />
         </div>
+        <div v-if="isLoadingAgent" class="flex justify-center pv5">
+          <LoadingGear />
+        </div>
         <ul>
           <li
             v-for="(agent, key) in filteredAgents"
@@ -33,6 +36,7 @@
                   src="~/assets/images/image-placeholder.svg"
                 />
               </div>
+
               <div>
                 <p class="mb2 fw7 dark f5">{{ agent.name }}</p>
                 <p class="fw4 dark f6">
@@ -87,6 +91,7 @@
                   </defs>
                 </svg>
                 <!-- Active since May 29, 2021 -->
+                Active since
                 {{ memberSince(agentdetails[0].data.active_since) }}
               </p>
             </div>
@@ -223,6 +228,7 @@ export default {
       ],
       isContent: false,
       activeCount: 0,
+      isLoadingAgent: false,
     };
   },
   computed: {
@@ -259,6 +265,7 @@ export default {
   methods: {
     async getAgents() {
       try {
+        this.isLoadingAgent = true;
         const user = this.$auth.$storage.getUniversal("user");
         const token = "Bearer " + user.token;
         this.$axios.setHeader("Authorization", token);
@@ -269,13 +276,13 @@ export default {
           active_since: this.agents[0].created_at,
           key_count: 0,
         };
+        this.isLoadingAgent = false;
         this.getAgentProperties(this.agents[0].id, firstAgent);
       } catch (error) {
         console.log("error", error);
       }
     },
     async getAgentProperties(id, agentdata) {
-      console.log("clicked", agentdata);
       this.isContent = true;
       this.activeCount = agentdata.key_count;
       const user = this.$auth.$storage.getUniversal("user");
@@ -284,24 +291,10 @@ export default {
       const response = await this.$axios.$get(
         `admin/agent/property-listings/${id}`
       );
-      // const responseData = response.data;
       let details = { property: response.data, data: agentdata };
       this.agentdetails.length = 0;
-      console.log(this.agentdetails);
       this.isContent = false;
       return this.agentdetails.push(details);
-      // console.log("details", this.agentdetails);
-      // let spread = [...agentdata, response.data];
-      // console.log("spread", spread);
-      // responseData.map((response) => {
-      //   this.agentdetails = [
-      //     {
-      //       name: "Testing name",
-      //       details: response,
-      //     },
-      //   ];
-      // });
-      // console.log(response);
     },
     memberSince(datecreated) {
       // const datecreated = date;
