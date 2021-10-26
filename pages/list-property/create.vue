@@ -227,6 +227,7 @@
 <script>
 export default {
   name: "AddListing",
+  middleware: "auth",
   data() {
     return {
       title: null,

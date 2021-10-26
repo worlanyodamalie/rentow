@@ -97,24 +97,19 @@ export default {
         const response = await this.$auth.loginWith("local", {
           data: this.logindata,
         });
-        // const user = {
-        //   username: this.logindata.login,
-        // }
-        // this.$toast.success("Successfully logged in!");
-        // const setuser = await this.$auth.setUser(response.data.data.profile);
-        // console.log("set user", setuser);
+
         const profile = response.data.data;
         this.$auth.$storage.setUniversal("user", profile, true);
-        console.log("logged in", this.$auth.loggedIn);
-        console.log("login response", response);
+        this.$auth.$storage.setState("loggedIn", true);
         this.$router.push("/list-property");
+        // await this.$auth.setUser(profile);
       } catch (error) {
         this.isloading = false;
         this.alert = true;
-
-        this.errormessage = error.response.data.message;
-
-        //    console.log("error",error.response.data)
+        console.log("error", error);
+        this.errormessage = error.response
+          ? error.response.data.message
+          : "Something went wrong";
       }
     },
     dismiss() {

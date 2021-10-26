@@ -10,7 +10,7 @@
     <div v-if="isAuthenticated" class="user-profile flex items-center ml-auto">
       <img class="w2" src="~/assets/images/image-placeholder.svg" alt="" />
       <label for="user-profile" class="mr1 ml1 fw5 fs-normal cursor f5"
-        >{{ loggedInUser }}
+        >{{ loggedInUser.profile.name }}
         <svg
           width="10"
           height="7"
@@ -28,14 +28,21 @@
       </label>
       <input id="user-profile" type="checkbox" name="" />
       <ul class="user-profile-menu">
+        <li class="pb2">
+          <nuxt-link
+            to="/list-property"
+            class="text-underline-none dark cursor f5 ph3 fw5"
+            >My Profile</nuxt-link
+          >
+        </li>
         <li>
-          <nuxt-link to="/" class="text-underline-none dark f5 ph3 fw5"
-            >Logout</nuxt-link
+          <a class="text-underline-none dark cursor f5 ph3 fw5" @click="logout"
+            >Logout</a
           >
         </li>
       </ul>
     </div>
-    <div v-else class="flex items-center">
+    <div v-if="!isAuthenticated" class="flex items-center">
       <nuxt-link
         class="dn-xs text-underline-none cursor fw5 dark"
         to="/auth/login"
@@ -61,8 +68,14 @@ export default {
   name: "Header",
   computed: {
     ...mapGetters(["isAuthenticated", "loggedInUser"]),
-    loggedInUser() {
-      return this.$auth.loggedIn;
+    // loggedInUser() {
+    //   return this.$auth.loggedIn;
+    // },
+  },
+  methods: {
+    async logout() {
+      await this.$auth.logout();
+      this.$router.push("/");
     },
   },
 };
@@ -88,11 +101,18 @@ export default {
   width: 15rem;
 }
 
-.user-profile input[type="checkbox"] + .user-profile-menu {
+/* .user-profile input[type="checkbox"] + .user-profile-menu {
   display: none;
 }
 
 .user-profile input[type="checkbox"]:checked + .user-profile-menu {
+  display: block;
+} */
+.user-profile-menu {
+  display: none;
+}
+
+.user-profile:hover .user-profile-menu {
   display: block;
 }
 </style>

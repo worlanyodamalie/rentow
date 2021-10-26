@@ -64,6 +64,10 @@ export default {
         },
       },
     },
+    redirect: {
+      home: false,
+      login: "/auth/login",
+    },
   },
   // router: {
   //   middleware: ['auth']
