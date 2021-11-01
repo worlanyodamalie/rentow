@@ -78,6 +78,7 @@
 export default {
   name: "Login",
   layout: "auth",
+  // middleware: "guest",
   data() {
     return {
       logindata: {
@@ -100,7 +101,10 @@ export default {
 
         const profile = response.data.data;
         this.$auth.$storage.setUniversal("user", profile, true);
-        this.$auth.$storage.setState("loggedIn", true);
+        // this.$auth.$storage.setState("loggedIn", true);
+        this.$auth.$storage.setUniversal("loggedIn", true);
+        // this.$auth.$storage.syncUniversal("loggedIn", true);
+        this.isloading = false;
         this.$router.push("/list-property");
         // await this.$auth.setUser(profile);
       } catch (error) {

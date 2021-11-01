@@ -280,7 +280,6 @@ export default {
         const user = this.$auth.$storage.getUniversal("user");
         const user_id = user.profile.id;
         const token = "Bearer " + user.token;
-        console.log("token", token);
         const formdata = {
           title: this.title,
           listing_type: this.listtype,
@@ -296,14 +295,14 @@ export default {
           period: this.period,
           user_id: user_id,
         };
-        console.log(formdata);
+        
         this.$axios.setHeader("Authorization", token);
         this.$axios.setHeader("Content-Type", "application/json");
         const response = await this.$axios.post(
           "property-listing/create",
           formdata
         );
-        console.log(response);
+
         this.$router.push("/list-property");
       } catch (err) {
         console.log("error", err);

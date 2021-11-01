@@ -140,6 +140,7 @@
 <script>
 export default {
   name: "Listing",
+  middleware: "auth",
   data() {
     return {
       listing: [],

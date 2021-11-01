@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 <template>
   <div>
     <div class="flex flex-wrap">
@@ -48,6 +49,254 @@
           </li>
         </ul>
       </div>
+      <div v-if="isContent" class="loadingSvg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          style="margin: auto; /* background:#fff; */ display: block"
+          width="200px"
+          height="200px"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid"
+        >
+          <circle cx="75" cy="50" fill="#dcfff8" r="5">
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="-0.9166666666666666s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="-0.9166666666666666s"
+            ></animate>
+          </circle>
+          <circle cx="71.65063509461098" cy="62.5" fill="#dcfff8" r="5">
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="-0.8333333333333334s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="-0.8333333333333334s"
+            ></animate>
+          </circle>
+          <circle cx="62.5" cy="71.65063509461096" fill="#dcfff8" r="5">
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="-0.75s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="-0.75s"
+            ></animate>
+          </circle>
+          <circle cx="50" cy="75" fill="#dcfff8" r="5">
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="-0.6666666666666666s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="-0.6666666666666666s"
+            ></animate>
+          </circle>
+          <circle
+            cx="37.50000000000001"
+            cy="71.65063509461098"
+            fill="#dcfff8"
+            r="5"
+          >
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="-0.5833333333333334s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="-0.5833333333333334s"
+            ></animate>
+          </circle>
+          <circle cx="28.34936490538903" cy="62.5" fill="#dcfff8" r="5">
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="-0.5s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="-0.5s"
+            ></animate>
+          </circle>
+          <circle cx="25" cy="50" fill="#dcfff8" r="5">
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="-0.4166666666666667s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="-0.4166666666666667s"
+            ></animate>
+          </circle>
+          <circle
+            cx="28.34936490538903"
+            cy="37.50000000000001"
+            fill="#dcfff8"
+            r="5"
+          >
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="-0.3333333333333333s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="-0.3333333333333333s"
+            ></animate>
+          </circle>
+          <circle
+            cx="37.499999999999986"
+            cy="28.349364905389038"
+            fill="#dcfff8"
+            r="5"
+          >
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="-0.25s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="-0.25s"
+            ></animate>
+          </circle>
+          <circle cx="49.99999999999999" cy="25" fill="#dcfff8" r="5">
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="-0.16666666666666666s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="-0.16666666666666666s"
+            ></animate>
+          </circle>
+          <circle cx="62.5" cy="28.349364905389034" fill="#dcfff8" r="5">
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="-0.08333333333333333s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="-0.08333333333333333s"
+            ></animate>
+          </circle>
+          <circle
+            cx="71.65063509461096"
+            cy="37.499999999999986"
+            fill="#dcfff8"
+            r="5"
+          >
+            <animate
+              attributeName="r"
+              values="3;3;5;3;3"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              repeatCount="indefinite"
+              begin="0s"
+            ></animate>
+            <animate
+              attributeName="fill"
+              values="#dcfff8;#dcfff8;#07a287;#dcfff8;#dcfff8"
+              repeatCount="indefinite"
+              times="0;0.1;0.2;0.3;1"
+              dur="1s"
+              begin="0s"
+            ></animate>
+          </circle>
+        </svg>
+      </div>
       <div class="approval-content" :class="isContent === true ? 'o-05' : ''">
         <div v-if="agentdetails.length !== 0">
           <div class="flex pb4 bb b--light-gray">
@@ -97,16 +346,20 @@
             </div>
           </div>
           <div class="flex pv4">
-            <select v-model="selectedapartment">
+            <!-- <select v-model="selectedapartment">
               <option value="" disabled>Select apartment type</option>
               <option v-for="(apartment, key) in apartmentoptions" :key="key">
                 {{ apartment }}
               </option>
-            </select>
-            <select v-model="selectedapproval" class="mh4">
+            </select> -->
+            <select @change="filterStatus($event)">
               <option value="" disabled>Select approval type</option>
-              <option v-for="(approval, key) in approvaloptions" :key="key">
-                {{ approval }}
+              <option
+                v-for="(approval, key) in approvaloptions"
+                :key="key"
+                :value="approval"
+              >
+                {{ transformText(approval) }}
               </option>
             </select>
           </div>
@@ -149,7 +402,15 @@
                   <span class="grey--4 f6">per month</span>
                 </h3>
               </div>
-              <span class="badge badge--await mx-auto">Awaiting approval</span>
+              <span
+                class="badge mx-auto"
+                :class="
+                  apartment.status === 'APPROVED'
+                    ? 'badge--success'
+                    : 'badge--await'
+                "
+                >{{ apartment.status }}</span
+              >
               <nuxt-link
                 class="btn btn--green-outline"
                 :to="`/approval/${apartment.id}`"
@@ -157,9 +418,6 @@
               >
             </div>
           </div>
-        </div>
-        <div else>
-          <!-- <LoadingGear /> -->
         </div>
       </div>
     </div>
@@ -169,6 +427,7 @@
 export default {
   name: "Approval",
   layout: "approval",
+  // middleware: "auth",
   data() {
     return {
       search: null,
@@ -179,7 +438,7 @@ export default {
         "Two bedroom apartment",
         "Three bedroom apartment",
       ],
-      approvaloptions: ["Awaiting approval", "Rejected", "Accepted"],
+      approvaloptions: ["PENDING_APPROVAL", "REJECTED", "APPROVED"],
       agents: [],
       agentdetails: [],
       apartments: [
@@ -229,6 +488,7 @@ export default {
       isContent: false,
       activeCount: 0,
       isLoadingAgent: false,
+      testprop: [],
     };
   },
   computed: {
@@ -255,6 +515,12 @@ export default {
         } else {
           return "property";
         }
+      };
+    },
+    // eslint-disable-next-line no-unused-vars
+    transformText(text) {
+      return (text) => {
+        return text === "PENDING_APPROVAL" ? "PENDING APPROVAL" : text;
       };
     },
   },
@@ -300,6 +566,23 @@ export default {
       // const datecreated = date;
       const date = new Date(datecreated).toDateString();
       return date;
+    },
+    filterStatus(event) {
+      console.log("this is event", event.target.value);
+      let property = this.agentdetails[0].property;
+      // property
+      //   .filter((prop) => {
+      //     return prop.status === event.target.value;
+      //   })
+      //   .map((status) => {
+      //     // property.length = 0;
+      //     property.push(status);   
+      //   });
+     
+      console.log("includes" , property.includes(event.target.value));
+      // property.length = 0;
+      // this.testprop.push(filteredProperty);
+      // console.log("filtered prop", filteredProperty);
     },
   },
 };
@@ -348,12 +631,24 @@ export default {
 .badge {
   padding: 0.6rem;
   border-radius: 11px;
-  font-weight: normal;
+  font-weight: 500;
   cursor: pointer;
 }
 
 .badge--await {
   background: rgba(255, 75, 110, 0.08);
   color: #ff4b6e;
+}
+
+.badge--success {
+  background: #07a287;
+  color: #ffffff;
+}
+
+.loadingSvg {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 </style>
