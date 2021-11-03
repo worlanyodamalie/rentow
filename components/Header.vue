@@ -2,7 +2,7 @@
   <div class="flex justify-between-xs items-center flex-wrap rentow-header-nav">
     <nuxt-link class="cursor" to="/"><Logo /></nuxt-link>
     <ul class="rentow-ul-nav dn-xs">
-      <li><nuxt-link to="/">Search Properties</nuxt-link></li>
+      <li><nuxt-link to="/search-properties">Search Properties</nuxt-link></li>
       <li><nuxt-link to="/properties">List Properties</nuxt-link></li>
       <li><nuxt-link to="/">Blog</nuxt-link></li>
       <!-- <li><nuxt-link to="/auth/login">Log in</nuxt-link></li> -->

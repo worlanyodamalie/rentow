@@ -213,6 +213,13 @@ a.btn{
     background: #ffffff;
 }
 
+.btn-white-bg{
+    border: 1px solid #E1E3E6;
+    color: #757D8A;
+    font-weight: 500;
+    background: #ffffff;
+}
+
 .mx-auto{
     margin: 0 auto;
 }
@@ -370,13 +377,18 @@ a.btn{
       text-align: center;
       display:block;
   }
-
-  .list-radio  input[type="radio"] {
+   
+    .list-radio-variant input[type="checkbox"],
+    .list-radio-variant input[type="radio"],
+    .list-radio  input[type="radio"] {
       opacity: 0;
       position: fixed;
       width: 0;
   }
 
+  
+
+  .list-radio-variant label,
   .list-radio label{
       display: inline-block;
       background: #F8F8F8;        
@@ -392,11 +404,24 @@ a.btn{
       width:100%;
   }
 
+  .list-radio-variant label{
+    font-size: 0.89rem;
+   }
+  
+   .list-radio-variant input[type="checkbox"]:checked + label,
+  .list-radio-variant input[type="radio"]:checked + label{
+    background: #ffffff;
+    border: 1px solid  #07A287;
+    color: #07A287;
+  }
+  
+  .list-radio input[type="checkox"]:checked + label,
   .list-radio input[type="radio"]:checked + label {
       background-color:#08b395;
       color:#ffffff;
     }
-
+   
+  .list-radio-variant > div,  
   .list-radio > div{
       flex: 0 0 30%;
   }
@@ -470,6 +495,65 @@ a.btn{
     border-radius: 8px;
     max-width: 22rem;
   }
+
+  /* Modal */
+  .modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: table;
+    transition: opacity 0.3s ease;
+  }
+  
+  .modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  .modal-container {
+    width: 50rem;
+    margin: 0px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+    transition: all 0.3s ease;
+    /* font-family: Helvetica, Arial, sans-serif; */
+  }
+  
+  /* .modal-header h3 {
+    margin-top: 0;
+    color: #42b983;
+  }
+   */
+  .modal-body {
+    margin: 20px 0;
+  }
+  
+  .modal-default-button {
+    float: right;
+  }
+  
+
+  .modal-enter {
+    opacity: 0;
+  }
+  
+  .modal-leave-active {
+    opacity: 0;
+  }
+  
+  .modal-enter .modal-container,
+  .modal-leave-active .modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  
+  /* Modal */
 
 
 @media screen and (max-width:48em){

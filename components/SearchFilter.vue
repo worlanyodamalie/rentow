@@ -1,35 +1,177 @@
 <template>
-    <div class="flex rentow-search-filter">
-        <multiselect v-model="locationValue" :options="locationOption"  placeholder="Choose location" ></multiselect>
-        <multiselect v-model="apartmentValue" :options="apartmentOption"  placeholder="Choose apartment type" ></multiselect>
-        <multiselect v-model="rangeValue" :options="rangeOption"  placeholder="Budget range" ></multiselect>
+  <div class="flex flex-wrap rentow-search-filter">
+    <Multiselect
+      v-model="locationValue"
+      :options="locationOption"
+      placeholder="Choose location"
+    ></Multiselect>
+    <Multiselect
+      v-model="apartmentValue"
+      :options="apartmentOption"
+      placeholder="Choose apartment type"
+    ></Multiselect>
+    <Multiselect
+      v-model="rangeValue"
+      :options="rangeOption"
+      placeholder="Budget range"
+    ></Multiselect>
+    <button v-if="isFilter" class="btn btn-white-bg" @click="isModal = true">
+      More Filters
+    </button>
+    <Modal v-if="isModal" @close="isModal = false">
+      <template #header> <h3 class="dark fw7">Filters</h3> </template>
+      <template #body>
+        <h4 class="dark fw7">I want to rent</h4>
+        <div class="flex flex-wrap justify-between list-radio-variant mt3">
+          <div>
+            <input
+              id="rent"
+              v-model="listtype"
+              type="radio"
+              value="rent"
+              name="listing-for"
+            />
+            <label for="rent">Residential property</label>
+          </div>
+          <div>
+            <input
+              id="shortlet"
+              v-model="listtype"
+              type="radio"
+              value="shortlet"
+              name="listing-for"
+            />
+            <label for="shortlet">Commercial Property</label>
+          </div>
+          <div>
+            <input
+              id="lease"
+              v-model="listtype"
+              type="radio"
+              value="lease"
+              name="listing-for"
+            />
+            <label for="lease">Industrial property</label>
+          </div>
+        </div>
+        <h4 class="dark fw7 pt4 mb4">Price range</h4>
+        <div class="pt3">
+          <Slider
+            v-model="range"
+            :min="0"
+            :max="4000"
+            @update="getrangeValue"
+          />
+        </div>
 
-        <nuxt-link to="/" class="btn btn--green ">Search</nuxt-link>
-    </div>
+        <div class="flex justify-between mv3">
+          <div>
+            <p class="fw7 mv1 green">GHS {{ minval }}</p>
+            <p class="fw4 mv1 f7 italic">per month</p>
+          </div>
+          <div>
+            <p class="fw7 mv1 green">GHS {{ maxval }}</p>
+            <p class="fw4 mv1 f7 italic">per month</p>
+          </div>
+        </div>
+        <h4 class="dark fw7 mv3">Amenities</h4>
+        <div>
+          <div class="flex flex-wrap justify-between list-radio-variant">
+            <div v-for="(amenity, key) in amenities" :key="key" class="pb2">
+              <input
+                :id="key"
+                v-model="facilitiesOptions"
+                type="checkbox"
+                :value="amenity"
+              />
+              <label :for="key">{{ amenity }}</label>
+            </div>
+          </div>
+        </div>
+      </template>
+      <template #footer>
+        <div class="mv3">
+          <button class="btn btn--green ml-auto" style="display: block">
+            Show properties
+          </button>
+          <!-- <button class="btn btn--grey">Cancel</button> -->
+        </div>
+      </template>
+    </Modal>
+    <nuxt-link v-if="showButton" to="/search-properties" class="btn btn--green"
+      >Search</nuxt-link
+    >
+  </div>
 </template>
 <script>
-import Multiselect from 'vue-multiselect'
+import Multiselect from "vue-multiselect";
+import Slider from "@vueform/slider/dist/slider.vue2.js";
 
 export default {
-    components: {
-      Multiselect
+  components: {
+    Multiselect,
+    Slider,
+  },
+  props: {
+    showButton: {
+      type: Boolean,
+      default: true,
     },
-    data(){
-        return {
-           locationValue: null, 
-           apartmentValue: null,
-           rangeValue: null , 
-           locationOption: [ 'Accra Central' , 'Osu' , 'Weija' ],
-           apartmentOption: [ 'Self contained apartment' , 'Chamber and hall' , 'One bedroom apartment' , 'Two bedroom apartment', 'Three bedroom apartment' ],
-           rangeOption: [ '2000 - 4000' , '4000-10,000' , '20,000 - 35,000' , '35,000-60,000', '60,000 -100,000' ]
-
-        }
-    }
-}
+    isFilter: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      listtype: null,
+      locationValue: null,
+      apartmentValue: null,
+      rangeValue: null,
+      locationOption: ["Accra Central", "Osu", "Weija"],
+      apartmentOption: [
+        "Self contained apartment",
+        "Chamber and hall",
+        "One bedroom apartment",
+        "Two bedroom apartment",
+        "Three bedroom apartment",
+      ],
+      rangeOption: [
+        "2000 - 4000",
+        "4000-10,000",
+        "20,000 - 35,000",
+        "35,000-60,000",
+        "60,000 -100,000",
+      ],
+      isModal: false,
+      range: [100, 500],
+      minval: 100,
+      maxval: 500,
+      amenities: [
+        "A kitchen",
+        "Furnished living room",
+        "Home cleaning",
+        "Parking space",
+        "Newly built",
+        "Home cleaning services",
+        "Walled apartment",
+        "Wifi services",
+        "Sitting room",
+      ],
+      facilitiesOptions: [],
+    };
+  },
+  methods: {
+    getrangeValue(value) {
+      this.minval = value[0];
+      this.maxval = value[1];
+      console.log(value);
+    },
+  },
+};
 </script>
 <style lang="css">
-
-
+@import "@vueform/slider/themes/default.scss";
 
 fieldset[disabled] .multiselect {
   pointer-events: none;
@@ -494,5 +636,4 @@ fieldset[disabled] .multiselect {
     transform: rotate(2turn);
   }
 }
-
 </style>

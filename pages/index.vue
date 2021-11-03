@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="homepage-search-wrapper w-90-ns dn-xs center">
-        <SearchFilter />
+        <SearchFilter :is-filter="false" />
       </div>
       <div class="bb b--light-gray flex pv3 w-90-ns center"></div>
       <div class="flex flex-column w-90-ns center">

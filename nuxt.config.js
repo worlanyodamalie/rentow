@@ -30,7 +30,7 @@ export default {
   },
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
-  buildModules: ["@nuxtjs/google-fonts"],
+  buildModules: ["@nuxtjs/google-fonts", "@nuxtjs/composition-api/module"],
 
   googleFonts: {
     display: "swap",
