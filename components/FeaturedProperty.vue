@@ -19,7 +19,7 @@
           <div
             v-for="residence in residential"
             :key="residence.title"
-            class="flex flex-column ph3"
+            class="flex flex-column ph3 pb3"
           >
             <div class="pv3">
               <img
