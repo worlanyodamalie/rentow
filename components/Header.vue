@@ -75,6 +75,8 @@ export default {
   methods: {
     async logout() {
       await this.$auth.logout();
+      this.$auth.$storage.setCookie("loggedIn", false);
+      this.$auth.$storage.removeCookie("user", true);
       this.$router.push("/");
     },
   },

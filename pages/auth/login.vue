@@ -100,9 +100,12 @@ export default {
         });
 
         const profile = response.data.data;
-        this.$auth.$storage.setUniversal("user", profile, true);
-        // this.$auth.$storage.setState("loggedIn", true);
-        this.$auth.$storage.setUniversal("loggedIn", true);
+        // this.$auth.$storage.setUniversal("user", profile, true);
+        this.$auth.$storage.setState("user", profile);
+        this.$auth.$storage.setState("loggedIn", true);
+        this.$auth.$storage.setCookie("user", profile);
+        this.$auth.$storage.setCookie("loggedIn", true);
+        // this.$auth.$storage.setUniversal("loggedIn", true);
         // this.$auth.$storage.syncUniversal("loggedIn", true);
         this.isloading = false;
         this.$router.push("/list-property");

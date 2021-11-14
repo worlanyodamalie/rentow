@@ -69,9 +69,9 @@ export default {
       login: "/auth/login",
     },
   },
-  // router: {
-  //   middleware: ['auth']
-  // },
+  router: {
+    middleware: ["authenticated"],
+  },
   axios: {
     baseURL: "https://rentow.herokuapp.com/api",
   },

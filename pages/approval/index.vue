@@ -427,7 +427,7 @@
 export default {
   name: "Approval",
   layout: "approval",
-  // middleware: "auth",
+  middleware: "auth",
   data() {
     return {
       search: null,

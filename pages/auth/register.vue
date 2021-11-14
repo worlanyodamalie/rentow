@@ -182,7 +182,11 @@ export default {
         });
 
         // console.log(user)
-        this.$router.push("/list-property");
+        if (this.registerData.profile === "agent") {
+          this.$router.push("/list-property");
+        } else {
+          this.$router.push("/");
+        }
       } catch (err) {
         this.isloading = false;
         console.log(err.response);

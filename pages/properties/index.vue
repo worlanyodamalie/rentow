@@ -79,9 +79,9 @@
                   </button>
                 </div>
                 <div class="tc mv2">
-                  <button class="btn btn--green">
+                  <nuxt-link to="/auth/register" class="btn btn--green">
                     Register with your email
-                  </button>
+                  </nuxt-link>
                 </div>
                 <p class="mv2 tc cursor f6">
                   I already have an account.<nuxt-link

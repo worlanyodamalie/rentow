@@ -10,3 +10,9 @@ export const getters = {
     return state.auth.user;
   },
 };
+
+// export const actions = {
+//    nuxtServerInit({commit} , {req}){
+//       console.log("init",req.headers.cookie);
+//    }
+// };
