@@ -5,7 +5,6 @@ export default async ({ app, store }) => {
     if (loggedInState) {
       app.$auth.$storage.setState("loggedIn", true);
       app.$auth.$storage.setState("user", user);
-      console.log("lnside loggedInState");
     }
   }
 };
