@@ -51,6 +51,7 @@ export default {
         acceptedFiles: ".jpeg,.jpg,.png,.svg",
       },
       isAddedFile: false,
+      images: [],
     };
   },
   mounted() {
@@ -64,15 +65,20 @@ export default {
     checkFileAdded(file) {
       if (file.length > 0) {
         this.isAddedFile = true;
+        this.filesAdded(this.$refs.el.dropzone.getAcceptedFiles());
       } else {
         this.isAddedFile = false;
       }
+    },
+    filesAdded(images) {
+      this.$emit("filesUploaded", images);
     },
     // eslint-disable-next-line no-unused-vars
     removeFiles(file) {
       if (this.$refs.el.dropzone.files.length === 0) {
         this.isAddedFile = false;
       }
+      this.filesAdded(this.$refs.el.dropzone.getAcceptedFiles());
     },
   },
 };

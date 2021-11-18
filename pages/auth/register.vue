@@ -183,7 +183,7 @@ export default {
 
         // console.log(user)
         if (this.registerData.profile === "agent") {
-          this.$router.push("/list-property");
+          this.$router.push("agent/listings");
         } else {
           this.$router.push("/");
         }

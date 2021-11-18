@@ -30,18 +30,18 @@
               </div>
             </div>
             <div class="pv4 bb b--light-gray">
-              <p class="f3 fw7 dark mb2">
+              <!-- <p class="f3 fw7 dark mb2">
                 4.5 <span class="f6 grey--5 fw5">/5.0</span>
-              </p>
-              <p class="f6 dark mb2">based on 120 reviews</p>
+              </p> -->
+              <!-- <p class="f6 dark mb2">based on 120 reviews</p> -->
             </div>
             <div class="pv4 bb b--light-gray">
               <h4 class="f6 grey--5 mb2">About</h4>
               <p class="f6 grey--5 lh-copy normal mb2">
-                We have thousands of villas, apartments and townhouses for sale.
+                <!-- We have thousands of villas, apartments and townhouses for sale.
                 Search through verified, hand-selected properties in Accra. Sign
                 Up Online. Verified Properties. Manage Viewings. Highlights: No
-                Extra Cost, Chat Option Available, Virtual Tours Available.
+                Extra Cost, Chat Option Available, Virtual Tours Available. -->
               </p>
             </div>
             <div class="pv4 tc">
@@ -56,7 +56,7 @@
           <div class="pv4 flex">
             <div class="ml-auto">
               <nuxt-link
-                to="/list-property/create"
+                to="listings/create"
                 class="btn btn--green ml-auto"
                 >+ Add new</nuxt-link
               >
@@ -126,7 +126,7 @@
             </div>
 
             <div class="pv3 tc">
-              <nuxt-link to="/list-property/create" class="btn btn--green"
+              <nuxt-link to="listings/create" class="btn btn--green"
                 >+ Add new listing</nuxt-link
               >
             </div>

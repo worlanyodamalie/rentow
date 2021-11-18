@@ -22,6 +22,12 @@
             v-show="step === 1"
             class="flex flex-column center w-60-ns w-70-l w-90-m w-90-s"
           >
+            <h3 class="f5 dark lh-copy mb2">Listing Category</h3>
+            <select v-model="categoryselected" class="mb4">
+              <option value="" disabled>Select category</option>
+              <option value="apartment">Apartment</option>
+              <option value="event_center">Event center</option>
+            </select>
             <h3 class="f5 dark lh-copy mb2">Listing title</h3>
             <input v-model="title" type="text" class="mb4" placeholder="" />
             <h3 class="f5 dark lh-copy mb2">Listing open for</h3>
@@ -171,7 +177,7 @@
             </h3>
 
             <div class="pv4 bb b--light-gray">
-              <ImageUpload />
+              <ImageUpload @filesUploaded="getFiles($event)" />
             </div>
             <div class="flex justify-between pv4">
               <button class="btn btn--green mh3" @click.prevent="previous">
@@ -241,6 +247,7 @@ export default {
       roomselected: "",
       bathroomselected: "",
       paymentduration: "",
+      categoryselected: "",
       step: 1,
       regionOptions: ["Greater Accra", "Ashanti"],
       cityOptions: ["Accra", "Kumasi", "Weija", "Osu", "Labone"],
@@ -258,6 +265,7 @@ export default {
         "Wifi services",
         "Sitting room",
       ],
+      images: null,
     };
   },
   computed: {
@@ -275,35 +283,41 @@ export default {
     previous() {
       this.step--;
     },
+    getFiles(files) {
+      this.images = files;
+    },
     async submitListing() {
       try {
         const user = this.$auth.$storage.getUniversal("user");
         const user_id = user.profile.id;
         const token = "Bearer " + user.token;
-        const formdata = {
-          title: this.title,
-          listing_type: this.listtype,
-          region: this.regionselected,
-          city: this.cityselected,
-          address: this.exactaddress,
-          description: this.description,
-          number_of_rooms: this.roomselected,
-          number_of_bathrooms: this.bathroomselected,
-          amenities: this.apartmentoptions,
-          // amenities: "A kitchen, walled apartment, wifi, sitting room",
-          amount: this.amount,
-          period: this.period,
-          user_id: user_id,
-        };
+
+        let data = new FormData();
+
+        data.append("category", this.categoryselected);
+        data.append("title", this.title);
+        data.append("listing_type", this.listtype);
+        data.append("region", this.regionselected);
+        data.append("city", this.cityselected);
+        data.append("address", this.exactaddress);
+        data.append("description", this.description);
+        data.append("amount", this.amount);
+        data.append("period", this.period);
+        data.append("number_of_rooms", this.roomselected);
+        data.append("number_of_bathrooms", this.bathroomselected);
+        data.append("user_id", user_id);
+        data.append("amenities[]", this.apartmentoptions);
+        data.append("images[]", this.images);
         
         this.$axios.setHeader("Authorization", token);
-        this.$axios.setHeader("Content-Type", "application/json");
+        this.$axios.setHeader("Content-Type", "multipart/form-data");
+
         const response = await this.$axios.post(
           "property-listing/create",
-          formdata
+          data
         );
 
-        this.$router.push("/list-property");
+        this.$router.push("agent/listings");
       } catch (err) {
         console.log("error", err);
       }

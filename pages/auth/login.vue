@@ -108,8 +108,7 @@ export default {
         // this.$auth.$storage.setUniversal("loggedIn", true);
         // this.$auth.$storage.syncUniversal("loggedIn", true);
         this.isloading = false;
-        this.$router.push("/list-property");
-        // await this.$auth.setUser(profile);
+        this.$router.push("agent/listings");
       } catch (error) {
         this.isloading = false;
         this.alert = true;
