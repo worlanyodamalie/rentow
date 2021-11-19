@@ -370,7 +370,7 @@ export default {
     },
     backUrl: {
       type: String,
-      default: "/list-property",
+      default: "/agent/listings",
     },
   },
   data() {

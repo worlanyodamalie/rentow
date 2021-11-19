@@ -308,9 +308,9 @@ export default {
         data.append("user_id", user_id);
         data.append("amenities[]", this.apartmentoptions);
         data.append("images[]", this.images);
-        
+
         this.$axios.setHeader("Authorization", token);
-        this.$axios.setHeader("Content-Type", "multipart/form-data");
+        // this.$axios.setHeader("Content-Type", "multipart/form-data");
 
         const response = await this.$axios.post(
           "property-listing/create",

@@ -43,7 +43,8 @@ export default {
   data() {
     return {
       options: {
-        url: "http://httpbin.org/anything",
+        // url: "http://httpbin.org/anything",
+        url: "anything",
         thumbnailWidth: 200,
         addRemoveLinks: true,
         maxFilesize: 1,

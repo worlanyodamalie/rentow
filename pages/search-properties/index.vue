@@ -14,15 +14,15 @@
         "
       >
         <div>
-          <SearchFilter :show-button="true" :is-filter="true" />
+          <SearchFilter :is-filter="true" />
         </div>
-        <div>
+        <!-- <div>
           <toggleButton toggle-text="Show Map" @toggled="getToggleValue" />
-        </div>
+        </div> -->
       </div>
       <div class="search-results-wrapper">
         <div>
-          <div class="flex flex-wrap">
+          <div class="flex flex-wrap" style="column-gap: 1rem">
             <div
               v-for="residence in residential"
               :key="residence.title"
@@ -50,9 +50,9 @@
             </div>
           </div>
         </div>
-        <div v-if="showMap">
+        <!-- <div v-if="showMap">
           <img src="~/assets/images/filter-map.png" alt="" />
-        </div>
+        </div> -->
       </div>
     </div>
     <Footer :is-background="true" />

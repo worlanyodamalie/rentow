@@ -30,7 +30,7 @@
       <ul class="user-profile-menu">
         <li class="pb2">
           <nuxt-link
-            to="agent/listings"
+            to="/agent/listings"
             class="text-underline-none dark cursor f5 ph3 fw5"
             >My Profile</nuxt-link
           >

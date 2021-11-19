@@ -45,7 +45,7 @@
               </p>
             </div>
             <div class="pv4 tc">
-              <nuxt-link to="/list-property" class="btn btn--green"
+              <nuxt-link to="/agent/listings" class="btn btn--green"
                 >Edit Profile Information</nuxt-link
               >
             </div>
@@ -56,7 +56,7 @@
           <div class="pv4 flex">
             <div class="ml-auto">
               <nuxt-link
-                to="listings/create"
+                to="/agent/listings/create"
                 class="btn btn--green ml-auto"
                 >+ Add new</nuxt-link
               >
@@ -67,7 +67,7 @@
               <nuxt-link
                 v-for="list in listing"
                 :key="list.title"
-                :to="`/list-property/${list.id}`"
+                :to="`/agent/listings/${list.id}`"
                 class="flex flex-column ph3 mb3 cursor text-underline-none"
               >
                 <div class="pv3">
@@ -126,7 +126,7 @@
             </div>
 
             <div class="pv3 tc">
-              <nuxt-link to="listings/create" class="btn btn--green"
+              <nuxt-link to="agent/listings/create" class="btn btn--green"
                 >+ Add new listing</nuxt-link
               >
             </div>

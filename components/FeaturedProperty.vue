@@ -2,19 +2,19 @@
   <div>
     <div class="bb b--light-gray pb3">
       <ul class="flex property-nav justify-center">
-        <li :class="[title === 'residential' ? 'active' : '']">
-          <a @click="title = 'residential'">Residential property</a>
+        <li :class="[title === 'Apartment' ? 'active' : '']">
+          <a @click="title = 'Apartment'">Residential property</a>
         </li>
-        <li :class="[title === 'commercial' ? 'active' : '']">
-          <a @click="title = 'commercial'">Commercial property</a>
+        <li :class="[title === 'event_center' ? 'active' : '']">
+          <a @click="title = 'event_center'">Event Center</a>
         </li>
-        <li :class="[title === 'industrial' ? 'active' : '']">
+        <!-- <li :class="[title === 'industrial' ? 'active' : '']">
           <a @click="title = 'industrial'">Industrial property</a>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="pv3">
-      <div v-if="title === 'residential'">
+      <div v-if="title === 'Apartment'">
         <div class="flex flex-wrap justify-center">
           <div
             v-for="residence in residential"
@@ -44,14 +44,14 @@
           </div>
         </div>
       </div>
-      <div v-if="title === 'commercial'">
-        <p>Commercial</p>
-      </div>
-      <div v-if="title === 'industrial'">
+      <div v-if="title === 'event_center'"></div>
+      <!-- <div v-if="title === 'industrial'">
         <p>Industrial</p>
-      </div>
+      </div> -->
       <div class="pv5 flex justify-center">
-        <nuxt-link class="btn btn--green" to="/">View all properties</nuxt-link>
+        <nuxt-link class="btn btn--green" to="/search-properties"
+          >View all properties</nuxt-link
+        >
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@
 export default {
   data() {
     return {
-      title: "residential",
+      title: "Apartment",
       residential: [
         {
           image: "apartment.svg",
@@ -107,7 +107,29 @@ export default {
       ],
     };
   },
-  methods: {},
+  watch: {
+    title() {
+      this.getFeaturedProperty();
+    },
+  },
+  created() {
+    this.getFeaturedProperty();
+  },
+  methods: {
+    async getFeaturedProperty() {
+      try {
+        const user = this.$auth.$storage.getUniversal("user");
+        const token = "Bearer " + user.token;
+        this.$axios.setHeader("Authorization", token);
+        const response = await this.$axios.$get(
+          `home/listings?category=${this.title}`
+        );
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
 };
 </script>
 <style lang="css">
