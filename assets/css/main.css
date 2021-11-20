@@ -554,7 +554,19 @@ a.btn{
   }
   
   /* Modal */
+  
+  .card-img{
+    height: auto;
+    width: 18rem;
+    border-radius: 1rem;
+  }
 
+  .loadingSvg {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
 
 @media screen and (max-width:48em){
     .flex-wrap-ms{

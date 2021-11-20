@@ -80,7 +80,7 @@
               Every room is completely furnished, including bed sheets, duvets
               and towels. The bathroom and the kitchen are for common use...
             </p> -->
-              <a class="green fw7 cursor mv3">
+              <!-- <a class="green fw7 cursor mv3">
                 Show more
                 <svg
                   width="20"
@@ -97,7 +97,7 @@
                     fill="#07A287"
                   />
                 </svg>
-              </a>
+              </a> -->
               <h2 class="bt b--light-gray pv4 dark fw7 f3">
                 What this place offers
               </h2>
@@ -285,6 +285,11 @@
                   }}</span>
                 </button>
               </div>
+              <div v-if="isRenter" class="bt b--light-gray pt4">
+                <button class="btn btn--green w-100">
+                  Interested? Request a visit
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -292,7 +297,7 @@
         <div class="map-location"></div>
         <div class="pv5 flex flex-wrap justify-between location-description">
           <div>
-            <h4 class="fw7 grey--6">Achimota Overhead</h4>
+            <h4 class="fw7 grey--6">{{ listing.city }}</h4>
             <p class="pv4 lh-copy fw4 dark">
               The neighborhood is very quiet. There are many little houses with
               very nice people. There is no traffic at all on your way to Accra.
@@ -332,7 +337,7 @@
                 <p class="fw4 grey--6 lh-copy f6">Posted 0 properties</p>
               </div>
             </div>
-            <a class="green fw7 cursor mv3">
+            <!-- <a class="green fw7 cursor mv3">
               View other properties
               <svg
                 width="20"
@@ -349,7 +354,7 @@
                   fill="#07A287"
                 />
               </svg>
-            </a>
+            </a> -->
           </div>
         </div>
       </div>
@@ -365,6 +370,10 @@ export default {
   name: "DetailsPage",
   props: {
     isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    isRenter: {
       type: Boolean,
       default: false,
     },
@@ -427,7 +436,6 @@ export default {
           property_listing_id: property_listing_id,
           status: status,
         };
-        console.log("status", statusObj);
         this.statusClicked(statusObj.status);
         const user = this.$auth.$storage.getUniversal("user");
         const token = "Bearer " + user.token;

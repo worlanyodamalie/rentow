@@ -17,34 +17,112 @@
       <div v-if="title === 'Apartment'">
         <div class="flex flex-wrap justify-center">
           <div
-            v-for="residence in residential"
-            :key="residence.title"
-            class="flex flex-column ph3 pb3"
+            v-if="isloadingproperty"
+            style="position: relative; left: 20%"
+            class="loadingSvg"
           >
-            <div class="pv3">
-              <img
-                :src="require(`~/assets/images/${residence.image}`)"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <h3 class="dark fs-normal fw7 pv3">{{ residence.title }}</h3>
-            <ul class="flex flex-wrap featured-prop-ul">
-              <li>
-                <p>{{ residence.location }}</p>
-              </li>
-              <li v-for="(utility, key) in residence.utilities" :key="key">
-                <p><span class="rounded-grey-dot"></span>{{ utility }}</p>
-              </li>
-            </ul>
-            <h3 class="pv2 green">
-              GHS {{ residence.price }}
-              <span class="grey--4 f6">per month</span>
-            </h3>
+            <LoadingCircle />
+          </div>
+          <div :class="isloadingproperty === true ? 'o-05' : ''">
+            <nuxt-link
+              v-for="residence in residential"
+              :key="residence.title"
+              :to="`/properties/${residence.user_id}`"
+              class="text-underline-none"
+            >
+              <div class="flex flex-column ph3 pb3">
+                <div class="pv3">
+                  <img
+                    v-if="residence.images.length === 0"
+                    :src="require(`~/assets/images/apartment.svg`)"
+                    class="card-img"
+                  />
+                  <img
+                    v-if="residence.images.length !== 0"
+                    :src="residence.images[0].path"
+                    class="card-img"
+                  />
+                </div>
+                <h3 class="dark fs-normal fw7 pv3">{{ residence.title }}</h3>
+                <ul class="flex flex-wrap featured-prop-ul">
+                  <li>
+                    <p>{{ residence.city }}</p>
+                  </li>
+                  <li>
+                    <p>
+                      <span class="rounded-grey-dot"></span
+                      >{{ residence.number_of_bathrooms }} bedroom(s)
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <span class="rounded-grey-dot"></span
+                      >{{ residence.number_of_rooms }} room(s)
+                    </p>
+                  </li>
+                </ul>
+                <h3 class="pv2 green">
+                  GHS {{ residence.amount }}
+                  <span class="grey--4 f6">per month</span>
+                </h3>
+              </div>
+            </nuxt-link>
           </div>
         </div>
       </div>
-      <div v-if="title === 'event_center'"></div>
+      <div v-if="title === 'event_center'">
+        <div class="flex flex-wrap justify-center">
+          <div
+            v-if="isloadingproperty"
+            style="position: relative; left: 20%"
+            class="loadingSvg"
+          >
+            <LoadingCircle />
+          </div>
+          <div :class="isloadingproperty === true ? 'o-05' : ''">
+            <div
+              v-for="residence in residential"
+              :key="residence.title"
+              class="flex flex-column ph3 pb3"
+            >
+              <div class="pv3">
+                <img
+                  v-if="residence.images.length === 0"
+                  :src="require(`~/assets/images/apartment.svg`)"
+                  class="card-img"
+                />
+                <img
+                  v-if="residence.images.length !== 0"
+                  :src="residence.images[0].path"
+                  class="card-img"
+                />
+              </div>
+              <h3 class="dark fs-normal fw7 pv3">{{ residence.title }}</h3>
+              <ul class="flex flex-wrap featured-prop-ul">
+                <li>
+                  <p>{{ residence.city }}</p>
+                </li>
+                <li>
+                  <p>
+                    <span class="rounded-grey-dot"></span
+                    >{{ residence.number_of_bathrooms }} bedroom(s)
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <span class="rounded-grey-dot"></span
+                    >{{ residence.number_of_rooms }} room(s)
+                  </p>
+                </li>
+              </ul>
+              <h3 class="pv2 green">
+                GHS {{ residence.amount }}
+                <span class="grey--4 f6">per month</span>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- <div v-if="title === 'industrial'">
         <p>Industrial</p>
       </div> -->
@@ -61,50 +139,52 @@ export default {
   data() {
     return {
       title: "Apartment",
-      residential: [
-        {
-          image: "apartment.svg",
-          location: "Achimota",
-          price: 6000,
-          title: "A mini self contain apartment",
-          utilities: ["1 bedroom", "1 bathroom"],
-        },
-        {
-          image: "apartment.svg",
-          location: "Achimota",
-          price: 6000,
-          title: "One bedroom apartment",
-          utilities: ["1 bedroom", "1 bathroom"],
-        },
-        {
-          image: "apartment.svg",
-          location: "Achimota",
-          price: 6000,
-          title: "Two bedroom apartment",
-          utilities: ["2 bedroom", "1 bathroom"],
-        },
-        {
-          image: "apartment.svg",
-          location: "Achimota",
-          price: 6000,
-          title: "A self contain apartment",
-          utilities: ["1 bedroom", "1 bathroom"],
-        },
-        {
-          image: "apartment.svg",
-          location: "Achimota",
-          price: 6000,
-          title: "Three bedroom apartment",
-          utilities: ["3 bedroom", "2 bathroom"],
-        },
-        {
-          image: "apartment.svg",
-          location: "Achimota",
-          price: 6000,
-          title: "Four bedroom apartment",
-          utilities: ["4 bedroom", "3 bathroom"],
-        },
-      ],
+      residential: null,
+      isloadingproperty: false,
+      // residential: [
+      //   {
+      //     image: "apartment.svg",
+      //     location: "Achimota",
+      //     price: 6000,
+      //     title: "A mini self contain apartment",
+      //     utilities: ["1 bedroom", "1 bathroom"],
+      //   },
+      //   {
+      //     image: "apartment.svg",
+      //     location: "Achimota",
+      //     price: 6000,
+      //     title: "One bedroom apartment",
+      //     utilities: ["1 bedroom", "1 bathroom"],
+      //   },
+      //   {
+      //     image: "apartment.svg",
+      //     location: "Achimota",
+      //     price: 6000,
+      //     title: "Two bedroom apartment",
+      //     utilities: ["2 bedroom", "1 bathroom"],
+      //   },
+      //   {
+      //     image: "apartment.svg",
+      //     location: "Achimota",
+      //     price: 6000,
+      //     title: "A self contain apartment",
+      //     utilities: ["1 bedroom", "1 bathroom"],
+      //   },
+      //   {
+      //     image: "apartment.svg",
+      //     location: "Achimota",
+      //     price: 6000,
+      //     title: "Three bedroom apartment",
+      //     utilities: ["3 bedroom", "2 bathroom"],
+      //   },
+      //   {
+      //     image: "apartment.svg",
+      //     location: "Achimota",
+      //     price: 6000,
+      //     title: "Four bedroom apartment",
+      //     utilities: ["4 bedroom", "3 bathroom"],
+      //   },
+      // ],
     };
   },
   watch: {
@@ -121,10 +201,13 @@ export default {
         const user = this.$auth.$storage.getUniversal("user");
         const token = "Bearer " + user.token;
         this.$axios.setHeader("Authorization", token);
+        this.isloadingproperty = true;
         const response = await this.$axios.$get(
           `home/listings?category=${this.title}`
         );
-        console.log(response);
+        this.residential = response.data;
+        this.isloadingproperty = false;
+        // console.log(response);
       } catch (error) {
         console.log(error);
       }

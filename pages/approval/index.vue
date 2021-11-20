@@ -408,11 +408,4 @@ export default {
   background: #07a287;
   color: #ffffff;
 }
-
-.loadingSvg {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
 </style>

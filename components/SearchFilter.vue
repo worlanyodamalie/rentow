@@ -6,23 +6,40 @@
       placeholder="Choose location"
     ></Multiselect>
     <Multiselect
+      v-model="category"
+      :options="categoryOption"
+      track-by="key"
+      label="name"
+      placeholder="Select a category"
+    ></Multiselect>
+    <!-- <Multiselect
       v-model="apartmentValue"
       :options="apartmentOption"
       placeholder="Choose apartment type"
-    ></Multiselect>
+    ></Multiselect> -->
     <Multiselect
       v-model="rangeValue"
       :options="rangeOption"
       placeholder="Budget range"
     ></Multiselect>
-    <button v-if="isFilter" class="btn btn-white-bg" @click="isModal = true">
+    <button
+      v-if="isFilter"
+      class="btn btn-white-bg"
+      style="height: 2.45rem"
+      @click="isModal = true"
+    >
       More Filters
     </button>
     <Modal v-if="isModal" @close="isModal = false">
       <template #header> <h3 class="dark fw7">Filters</h3> </template>
       <template #body>
-        <h4 class="dark fw7">I want to rent</h4>
-        <div class="flex flex-wrap justify-between list-radio-variant mt3">
+        <h4 class="dark fw7 mb3">I want to rent a</h4>
+        <Multiselect
+          v-model="apartmentValue"
+          :options="apartmentOption"
+          placeholder="Choose apartment type"
+        ></Multiselect>
+        <!-- <div class="flex flex-wrap justify-between list-radio-variant mt3">
           <div>
             <input
               id="rent"
@@ -53,7 +70,7 @@
             />
             <label for="lease">Industrial property</label>
           </div>
-        </div>
+        </div> -->
         <h4 class="dark fw7 pt4 mb4">Price range</h4>
         <div class="pt3">
           <Slider
@@ -98,9 +115,14 @@
         </div>
       </template>
     </Modal>
-    <nuxt-link v-if="showButton" to="/search-properties" class="btn btn--green"
-      >Search</nuxt-link
+    <button
+      v-if="showButton"
+      class="btn btn--green"
+      style="height: 2.45rem"
+      @click="getsearchResults"
     >
+      Search
+    </button>
   </div>
 </template>
 <script>
@@ -128,7 +150,18 @@ export default {
       locationValue: null,
       apartmentValue: null,
       rangeValue: null,
-      locationOption: ["Accra Central", "Osu", "Weija"],
+      category: null,
+      categoryOption: [
+        {
+          name: "Apartment",
+          key: "apartment",
+        },
+        {
+          name: "Event center",
+          key: "event_center",
+        },
+      ],
+      locationOption: ["Accra", "Osu", "Weija"],
       apartmentOption: [
         "Self contained apartment",
         "Chamber and hall",
@@ -136,13 +169,7 @@ export default {
         "Two bedroom apartment",
         "Three bedroom apartment",
       ],
-      rangeOption: [
-        "2000 - 4000",
-        "4000-10,000",
-        "20,000 - 35,000",
-        "35,000-60,000",
-        "60,000 -100,000",
-      ],
+      rangeOption: ["200-1000", "1000-5000", "5500-10000"],
       isModal: false,
       range: [100, 500],
       minval: 100,
@@ -161,11 +188,32 @@ export default {
       facilitiesOptions: [],
     };
   },
+  created() {
+    // this.getLocation();
+  },
   methods: {
     getrangeValue(value) {
       this.minval = value[0];
       this.maxval = value[1];
-      console.log(value);
+    },
+    getsearchResults() {
+      try {
+        let range = this.rangeValue ? this.rangeValue.split("-") : null;
+        const from_amount = range ? range[0] : "";
+        const to_amount = range ? range[1] : "";
+        let query = {
+          location: this.locationValue,
+          category: this.category.key,
+          from_amount: from_amount,
+          to_amount: to_amount,
+        };
+        this.$emit("queryparams", query);
+        this.$router.push(
+          `/search-properties?category=${this.category.key}&location=${this.locationValue}&from_amount=${from_amount}&to_amount=${to_amount}`
+        );
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
